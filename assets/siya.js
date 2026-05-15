@@ -108,4 +108,30 @@
   document.querySelectorAll('[data-year]').forEach((el) => {
     el.textContent = new Date().getFullYear();
   });
+  // ---------- Mobile burger menu ----------
+  function initBurger() {
+    const burger = document.getElementById('nav-burger');
+    const menu = document.getElementById('nav-mobile');
+    const closeBtn = document.getElementById('nav-mobile-close');
+    if (!burger || !menu) return;
+    burger.addEventListener('click', () => {
+      menu.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
+    if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+        menu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    }
+    menu.querySelectorAll('a').forEach((a) => {
+      a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+  initBurger();
+
+
 })();

@@ -554,3 +554,83 @@ body { opacity: 1; transition: opacity .35s var(--ease-out), transform .35s var(
   .card { padding: 24px; }
   .service-tile { padding: 24px; }
 }
+
+/* ────────────── MOBILE NAV BURGER ────────────── */
+.nav-burger {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--light-20);
+  border-radius: 6px;
+  color: var(--ivory);
+  cursor: pointer;
+  padding: 8px 10px;
+  line-height: 1;
+  margin-left: 12px;
+}
+.nav-mobile {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--navy-900);
+  z-index: 200;
+  padding: 80px 32px 40px;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.nav-mobile.open { display: flex; }
+.nav-mobile-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: transparent;
+  border: 1px solid var(--light-20);
+  border-radius: 6px;
+  color: var(--ivory);
+  cursor: pointer;
+  padding: 8px 12px;
+  font-size: 1rem;
+  line-height: 1;
+}
+.nav-mobile-link {
+  display: block;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--light-10);
+  font-family: var(--serif);
+  font-size: clamp(28px, 7vw, 40px);
+  font-weight: 350;
+  letter-spacing: -0.02em;
+  color: var(--ivory);
+  transition: color 0.2s;
+}
+.nav-mobile-link:hover { color: var(--cyan); }
+.nav-mobile-sub {
+  padding: 8px 0 8px 20px;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--light-10);
+}
+.nav-mobile-sub a {
+  padding: 12px 0;
+  font-size: 1rem;
+  color: var(--light-60);
+  border-bottom: 1px solid var(--light-08);
+  transition: color 0.2s;
+}
+.nav-mobile-sub a:last-child { border-bottom: none; }
+.nav-mobile-sub a:hover { color: var(--ivory); }
+.nav-mobile-sublabel {
+  padding: 18px 0 8px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--light-40);
+}
+.nav-mobile-cta {
+  margin-top: 32px;
+}
+@media (max-width: 880px) {
+  .nav-links { display: none; }
+  .nav-burger { display: inline-flex; align-items: center; gap: 6px; }
+  .nav-cta { display: none; }
+  .lang-toggle { margin-left: auto; }
+}
