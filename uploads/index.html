@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIYA Technology — L'écosystème numérique du commerce africain</title>
+<meta name="description" content="SIYA Technology bâtit l'écosystème intégré du commerce numérique africain. Marketplace SOKO, livraison BNS, paiement MobiSwift et conseil technologique.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@350;400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="SIYA Technology — Accueil">
+      <img src="siya-logo-full.png" alt="SIYA Technology">
+    </a>
+    <ul class="nav-menu">
+      <li><a href="a-propos.html" class="nav-link">À propos</a></li>
+      <li><a href="equipe.html" class="nav-link">Équipe</a></li>
+      <li>
+        <span class="nav-link" tabindex="0">
+          Écosystème
+          <span class="nav-caret" aria-hidden="true"></span>
+        </span>
+        <div class="nav-dropdown">
+          <a href="services/soko.html" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 7h18l-2 12H5L3 7z"/>
+              <path d="M8 7V4a4 4 0 0 1 8 0v3"/>
+            </svg>
+            <div>
+              <div class="nav-dropdown-name">SOKO</div>
+              <div class="nav-dropdown-desc">Marketplace e-commerce sécurisée</div>
+            </div>
+          </a>
+          <a href="services/bns.html" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 7l9-4 9 4-9 4-9-4z"/>
+              <path d="M3 12l9 4 9-4"/>
+              <path d="M3 17l9 4 9-4"/>
+            </svg>
+            <div>
+              <div class="nav-dropdown-name">BNS</div>
+              <div class="nav-dropdown-desc">Livraison par points relais</div>
+            </div>
+          </a>
+          <a href="services/mobiswift.html" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="6" width="20" height="14" rx="2"/>
+              <line x1="2" y1="11" x2="22" y2="11"/>
+            </svg>
+            <div>
+              <div class="nav-dropdown-name">MobiSwift</div>
+              <div class="nav-dropdown-desc">Portefeuille de paiement mobile</div>
+            </div>
+          </a>
+          <a href="services/consulting.html" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+            <div>
+              <div class="nav-dropdown-name">Consulting</div>
+              <div class="nav-dropdown-desc">Conseil et développement logiciel</div>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Ouvrir le menu" id="nav-burger">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MENU MOBILE -->
+<div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="Menu de navigation">
+  <button class="nav-burger-close" id="nav-close" aria-label="Fermer le menu">✕</button>
+  <a href="index.html" class="nav-mobile-link">Accueil</a>
+  <a href="a-propos.html" class="nav-mobile-link">À propos</a>
+  <a href="equipe.html" class="nav-mobile-link">Équipe</a>
+  <div class="nav-mobile-link" style="cursor:default;color:var(--text-muted);font-size:0.85rem;padding-bottom:0.5rem;padding-top:1.25rem">Écosystème</div>
+  <div class="nav-mobile-sub">
+    <a href="services/soko.html">SOKO — Marketplace</a>
+    <a href="services/bns.html">BNS — Points relais</a>
+    <a href="services/mobiswift.html">MobiSwift — Paiement</a>
+    <a href="services/consulting.html">Consulting</a>
+  </div>
+  <div class="nav-mobile-cta">
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Contact</a>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-decor" aria-hidden="true">
+  <svg width="540" height="540" style="top: -120px; right: -180px;" viewBox="0 0 540 540">
+    <g fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.18" style="color: var(--accent)">
+      <polygon points="270,30 480,150 480,390 270,510 60,390 60,150"/>
+      <polygon points="270,90 430,180 430,360 270,450 110,360 110,180"/>
+      <polygon points="270,150 380,212 380,328 270,390 160,328 160,212"/>
+      <polygon points="270,210 330,244 330,296 270,330 210,296 210,244"/>
+    </g>
+  </svg>
+</div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="eyebrow">ESN · Delaware · Afrique francophone</div>
+      <h1 class="display">
+        L'écosystème numérique<br>
+        du <em>commerce africain</em>
+      </h1>
+      <p class="lead" style="margin-top: 1.75rem">
+        SIYA Technology bâtit une infrastructure intégrée — marketplace,
+        livraison de proximité, paiement mobile, conseil technologique —
+        pour digitaliser le commerce en Afrique francophone.
+      </p>
+      <div class="hero-actions">
+        <a href="a-propos.html" class="btn btn-primary">Notre vision</a>
+        <a href="contact.html" class="btn btn-outline">Discuter d'un partenariat</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="metrics-band">
+  <div class="container">
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="metric-value">04</div>
+        <div class="metric-label">Services intégrés dans un écosystème cohérent</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">07</div>
+        <div class="metric-label">Associés fondateurs aux compétences complémentaires</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">11<em>+</em></div>
+        <div class="metric-label">Pays cibles d'Afrique francophone</div>
+      </div>
+      <div class="metric">
+        <div class="metric-value">100<em>%</em></div>
+        <div class="metric-label">Transactions digitales — no-cash et escrow</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="container">
+    <div class="section-head">
+      <span class="section-number">01 — Écosystème</span>
+      <h2 class="h1" style="margin-top: 1rem">Quatre briques<br>conçues pour <em>fonctionner ensemble</em></h2>
+      <p class="lead" style="margin-top: 1.5rem">
+        Chaque service est autonome, mais leur intégration crée une infrastructure
+        impossible à répliquer simplement. C'est notre différenciation structurelle.
+      </p>
+    </div>
+
+    <div class="ecosystem-grid">
+      <a href="services/soko.html" class="ecosystem-item">
+        <div class="ecosystem-item-num">01 / 04</div>
+        <h3 class="h3">SOKO <span>Marketplace</span></h3>
+        <p>
+          La première marketplace 100% digitale en zone CEMAC. Paiement sécurisé
+          par escrow, vendeurs vérifiés par KYC renforcé, commission dégressive
+          de 6 à 10%.
+        </p>
+        <span class="btn-arrow">Découvrir SOKO</span>
+      </a>
+
+      <a href="services/bns.html" class="ecosystem-item">
+        <div class="ecosystem-item-num">02 / 04</div>
+        <h3 class="h3">BNS <span>Livraison</span></h3>
+        <p>
+          Réseau de points relais natif de SOKO. Commerces de proximité
+          partenaires, code de retrait à 4 chiffres, libération escrow
+          automatique à la remise.
+        </p>
+        <span class="btn-arrow">Découvrir BNS</span>
+      </a>
+
+      <a href="services/mobiswift.html" class="ecosystem-item">
+        <div class="ecosystem-item-num">03 / 04</div>
+        <h3 class="h3">MobiSwift <span>Paiement</span></h3>
+        <p>
+          Portefeuille mobile africain en préparation. Service financier
+          grand public indépendant de SOKO, agrément COBAC en cours d'instruction.
+        </p>
+        <span class="btn-arrow">Découvrir MobiSwift</span>
+      </a>
+
+      <a href="services/consulting.html" class="ecosystem-item">
+        <div class="ecosystem-item-num">04 / 04</div>
+        <h3 class="h3">Consulting <span>Conseil &amp; Dev</span></h3>
+        <p>
+          Conception et développement de solutions numériques sur mesure
+          pour entreprises africaines. Partenaire technique des acteurs qui
+          digitalisent leur activité.
+        </p>
+        <span class="btn-arrow">Découvrir Consulting</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container-narrow">
+    <div class="section-head">
+      <span class="section-number">02 — Approche</span>
+      <h2 class="h1" style="margin-top: 1rem">Pensé depuis l'Afrique,<br>structuré pour <em>l'international</em></h2>
+    </div>
+
+    <div class="feature-list">
+      <div class="feature-row">
+        <div class="feature-num">01</div>
+        <div class="feature-title">Une structure capable d'absorber la croissance</div>
+        <div class="feature-body">
+          Delaware Corporation pour la holding, opérations au Cameroun
+          et en France. Cette architecture facilite les partenariats internationaux
+          et prépare une éventuelle levée de fonds sans contraintes structurelles.
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-num">02</div>
+        <div class="feature-title">Une intégration verticale assumée</div>
+        <div class="feature-body">
+          Là où la plupart des marketplaces dépendent de prestataires
+          externes pour la livraison ou le paiement, SIYA construit ses
+          propres briques — BNS, MobiSwift — pour contrôler l'expérience
+          de bout en bout et capter une part plus large de la valeur.
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-num">03</div>
+        <div class="feature-title">Une rigueur de transparence tarifaire</div>
+        <div class="feature-body">
+          Commission dégressive lisible (10 / 8 / 7 / 6%), seuils
+          de rentabilité communiqués aux vendeurs, abonnements clairs.
+          Nous croyons que la transparence est un avantage commercial,
+          pas une concession.
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-num">04</div>
+        <div class="feature-title">Une exigence no-cash sans compromis</div>
+        <div class="feature-body">
+          Toutes les transactions sur SOKO sont digitales — Mobile Money
+          ou carte bancaire, jamais d'espèces. Ce choix protège acheteurs
+          et vendeurs, sécurise les flux, et inscrit SIYA dans la trajectoire
+          de digitalisation des économies du continent.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner-inner">
+      <div>
+        <span class="eyebrow">Construisons ensemble</span>
+        <h2 class="h2">Opérateurs, institutions financières,<br>investisseurs — <em>parlons</em>.</h2>
+      </div>
+      <div>
+        <a href="contact.html" class="btn btn-primary">Prendre contact</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="siya-logo-full.png" alt="SIYA Technology">
+        <p>L'écosystème numérique du commerce africain. Marketplace, livraison, paiement, consulting.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Écosystème</div>
+        <ul class="footer-links">
+          <li><a href="services/soko.html">SOKO</a></li>
+          <li><a href="services/bns.html">BNS</a></li>
+          <li><a href="services/mobiswift.html">MobiSwift</a></li>
+          <li><a href="services/consulting.html">Consulting</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Entreprise</div>
+        <ul class="footer-links">
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="equipe.html">Équipe</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:partenariats@siya-tech.com">Partenariats</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Légal</div>
+        <ul class="footer-links">
+          <li><a href="#">CGU Acheteurs</a></li>
+          <li><a href="#">CGV Vendeurs</a></li>
+          <li><a href="#">Conditions BNS</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SIYA Technology — Delaware Corporation. Opérations Cameroun &amp; France.</span>
+      <div class="footer-bottom-links">
+        <a href="https://www.linkedin.com/company/siya-technology/" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://twitter.com" aria-label="X / Twitter">X</a>
+        <a href="mailto:contact@siya-tech.com">contact@siya-tech.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const id = link.getAttribute('href');
+    if (id === '#') return;
+    const target = document.querySelector(id);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Mobile burger menu
+const burger = document.getElementById('nav-burger');
+const mobileMenu = document.getElementById('nav-mobile');
+const closeBtn = document.getElementById('nav-close');
+
+if (burger && mobileMenu) {
+  burger.addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+}
+if (closeBtn && mobileMenu) {
+  closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+}
+// Fermer en cliquant un lien
+if (mobileMenu) {
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+</script>
+
+</body>
+</html>

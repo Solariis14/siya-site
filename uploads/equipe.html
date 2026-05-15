@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'équipe — SIYA Technology</title>
+<meta name="description" content="Les sept associés fondateurs de SIYA Technology, une équipe complémentaire aux compétences commerciales, financières et techniques.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@350;400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" aria-label="SIYA Technology — Accueil">
+      <img src="siya-logo-full.png" alt="SIYA Technology">
+    </a>
+    <ul class="nav-menu">
+      <li><a href="a-propos.html" class="nav-link">À propos</a></li>
+      <li><a href="equipe.html" class="nav-link is-active">Équipe</a></li>
+      <li>
+        <span class="nav-link" tabindex="0">
+          Écosystème
+          <span class="nav-caret" aria-hidden="true"></span>
+        </span>
+        <div class="nav-dropdown">
+          <a href="services/soko.html" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 7h18l-2 12H5L3 7z"/>
+              <path d="M8 7V4a4 4 0 0 1 8 0v3"/>
+            </svg>
+            <div>
+              <div class="nav-dropdown-name">SOKO</div>
+              <div class="nav-dropdown-desc">Marketplace e-commerce sécurisée</div>
+            </div>
+          </a>
+          <a href="services/bns.html" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M3 7l9-4 9 4-9 4-9-4z"/>
+              <path d="M3 12l9 4 9-4"/>
+              <path d="M3 17l9 4 9-4"/>
+            </svg>
+            <div>
+              <div class="nav-dropdown-name">BNS</div>
+              <div class="nav-dropdown-desc">Livraison par points relais</div>
+            </div>
+          </a>
+          <a href="services/mobiswift.html" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="2" y="6" width="20" height="14" rx="2"/>
+              <line x1="2" y1="11" x2="22" y2="11"/>
+            </svg>
+            <div>
+              <div class="nav-dropdown-name">MobiSwift</div>
+              <div class="nav-dropdown-desc">Portefeuille de paiement mobile</div>
+            </div>
+          </a>
+          <a href="services/consulting.html" class="nav-dropdown-item">
+            <svg class="nav-dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+            <div>
+              <div class="nav-dropdown-name">Consulting</div>
+              <div class="nav-dropdown-desc">Conseil et développement logiciel</div>
+            </div>
+          </a>
+        </div>
+      </li>
+      <li><a href="contact.html" class="nav-cta">Contact</a></li>
+    </ul>
+    <button class="nav-burger" aria-label="Ouvrir le menu" id="nav-burger">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- MENU MOBILE -->
+<div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="Menu de navigation">
+  <button class="nav-burger-close" id="nav-close" aria-label="Fermer le menu">✕</button>
+  <a href="index.html" class="nav-mobile-link">Accueil</a>
+  <a href="a-propos.html" class="nav-mobile-link">À propos</a>
+  <a href="equipe.html" class="nav-mobile-link">Équipe</a>
+  <div class="nav-mobile-link" style="cursor:default;color:var(--text-muted);font-size:0.85rem;padding-bottom:0.5rem;padding-top:1.25rem">Écosystème</div>
+  <div class="nav-mobile-sub">
+    <a href="services/soko.html">SOKO — Marketplace</a>
+    <a href="services/bns.html">BNS — Points relais</a>
+    <a href="services/mobiswift.html">MobiSwift — Paiement</a>
+    <a href="services/consulting.html">Consulting</a>
+  </div>
+  <div class="nav-mobile-cta">
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Contact</a>
+  </div>
+</div>
+
+<section class="page-hero">
+  <div class="hero-decor" aria-hidden="true">
+  <svg width="540" height="540" style="top: -120px; right: -180px;" viewBox="0 0 540 540">
+    <g fill="none" stroke="currentColor" stroke-width="0.7" opacity="0.18" style="color: var(--accent)">
+      <polygon points="270,30 480,150 480,390 270,510 60,390 60,150"/>
+      <polygon points="270,90 430,180 430,360 270,450 110,360 110,180"/>
+      <polygon points="270,150 380,212 380,328 270,390 160,328 160,212"/>
+      <polygon points="270,210 330,244 330,296 270,330 210,296 210,244"/>
+    </g>
+  </svg>
+</div>
+  <div class="container">
+    <div class="page-hero-inner">
+      <div>
+        <div class="eyebrow">Équipe</div>
+        <h1 class="h1">Sept fondateurs,<br><em>une vision</em>.</h1>
+      </div>
+      <div>
+        <p class="lead">
+          SIYA Technology est porté par une équipe complémentaire de
+          sept associés — commerciaux, financiers, techniques — réunis
+          par la conviction commune que l'Afrique mérite des solutions
+          conçues depuis l'Afrique.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <span class="section-number">01 — Les associés</span>
+    <h2 class="h1" style="margin-top: 1rem; margin-bottom: 4rem">
+      L'équipe <em>fondatrice</em>.
+    </h2>
+
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="team-monogram">FS</div>
+        <h3 class="team-name">Félix Wilhem SONG</h3>
+        <div class="team-role">CEO · Développement commercial</div>
+        <p class="team-bio">
+          Porte la vision SIYA. Coordonne la stratégie globale, le développement
+          commercial et la levée de fonds.
+        </p>
+      </div>
+
+      <div class="team-member">
+        <div class="team-monogram">JD</div>
+        <h3 class="team-name">Jean Christian DIKOUME</h3>
+        <div class="team-role">DAF · Finance &amp; Conformité</div>
+        <p class="team-bio">
+          Structure financière, conformité réglementaire, relations avec
+          partenaires bancaires et institutions financières.
+        </p>
+      </div>
+
+      <div class="team-member">
+        <div class="team-monogram">YB</div>
+        <h3 class="team-name">Yannick BYLL</h3>
+        <div class="team-role">Front-end &amp; Cybersécurité</div>
+        <p class="team-bio">
+          Sécurité applicative, hardening des plateformes, conception
+          des interfaces utilisateur critiques.
+        </p>
+      </div>
+
+      <div class="team-member">
+        <div class="team-monogram">JS</div>
+        <h3 class="team-name">Jedd SONG</h3>
+        <div class="team-role">IT Front-end</div>
+        <p class="team-bio">
+          Responsable du développement des interfaces utilisateur de
+          l'écosystème — SOKO acheteurs et vendeurs en priorité.
+        </p>
+      </div>
+
+      <div class="team-member">
+        <div class="team-monogram">KN</div>
+        <h3 class="team-name">Kadel NJANGTANG</h3>
+        <div class="team-role">IT Back-end</div>
+        <p class="team-bio">
+          Architecture backend, conception des API, intégrations Mobile
+          Money (MTN MoMo, Orange Money) et systèmes de paiement.
+        </p>
+      </div>
+
+      <div class="team-member">
+        <div class="team-monogram">BN</div>
+        <h3 class="team-name">Billy NGUEDJIO</h3>
+        <div class="team-role">IT Web App</div>
+        <p class="team-bio">
+          Applications web et infrastructure cloud. Performance,
+          scalabilité, observabilité.
+        </p>
+      </div>
+
+      <div class="team-member">
+        <div class="team-monogram">MA</div>
+        <h3 class="team-name">Mohamed AYEVA</h3>
+        <div class="team-role">Front-end · Mobile-first</div>
+        <p class="team-bio">
+          Conception et développement d'interfaces utilisateur orientées
+          mobile-first, adaptées aux usages du continent.
+        </p>
+      </div>
+
+      <div class="team-member" style="border-left: 1px solid var(--border-strong); background: var(--surface);">
+        <div class="team-monogram" style="border-color: var(--accent); color: var(--accent)">+</div>
+        <h3 class="team-name">Nous recrutons</h3>
+        <div class="team-role">Talents tech &amp; business</div>
+        <p class="team-bio">
+          Vous voulez nous rejoindre dans l'aventure SIYA ?
+          Écrivez-nous à <a href="mailto:contact@siya-tech.com" style="color: var(--accent)">contact@siya-tech.com</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="container-narrow">
+    <span class="section-number">02 — Notre approche</span>
+    <h2 class="h1" style="margin-top: 1rem; margin-bottom: 3rem">
+      Une équipe d'<em>opérateurs</em>, pas de théoriciens.
+    </h2>
+
+    <div class="prose">
+      <p>
+        Nos sept associés partagent un point commun : nous avons tous opéré,
+        construit, livré. Nous ne sommes pas des consultants qui théorisent
+        sur l'Afrique depuis un bureau parisien — nous opérons quotidiennement
+        depuis Douala et Yaoundé.
+      </p>
+      <p>
+        Cette composition n'est pas un accident. Nous avons délibérément
+        construit une équipe couvrant les quatre axes critiques d'une ESN
+        tech : <strong>direction</strong> (Félix), <strong>finance &amp; compliance</strong>
+        (Jean Christian), <strong>développement produit</strong> (Yannick, Jedd, Kadel, Billy,
+        Mohamed). C'est rare à ce stade — la plupart des startups tech
+        africaines sont mono-fondateur tech ou mono-fondateur business.
+      </p>
+      <p>
+        Cette équilibre nous permet de construire et de vendre en parallèle,
+        sans dépendance externe critique sur l'une de ces fonctions.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-banner-inner">
+      <div>
+        <span class="eyebrow">Vous voulez en savoir plus ?</span>
+        <h2 class="h2">Documentation détaillée<br>disponible <em>sur demande qualifiée</em>.</h2>
+      </div>
+      <div>
+        <a href="contact.html" class="btn btn-primary">Demander la doc</a>
+      </div>
+    </div>
+  </div>
+</section>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="siya-logo-full.png" alt="SIYA Technology">
+        <p>L'écosystème numérique du commerce africain. Marketplace, livraison, paiement, consulting.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Écosystème</div>
+        <ul class="footer-links">
+          <li><a href="services/soko.html">SOKO</a></li>
+          <li><a href="services/bns.html">BNS</a></li>
+          <li><a href="services/mobiswift.html">MobiSwift</a></li>
+          <li><a href="services/consulting.html">Consulting</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Entreprise</div>
+        <ul class="footer-links">
+          <li><a href="a-propos.html">À propos</a></li>
+          <li><a href="equipe.html">Équipe</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="mailto:partenariats@siya-tech.com">Partenariats</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Légal</div>
+        <ul class="footer-links">
+          <li><a href="#">CGU Acheteurs</a></li>
+          <li><a href="#">CGV Vendeurs</a></li>
+          <li><a href="#">Conditions BNS</a></li>
+          <li><a href="#">Politique de confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 SIYA Technology — Delaware Corporation. Opérations Cameroun &amp; France.</span>
+      <div class="footer-bottom-links">
+        <a href="https://www.linkedin.com/company/siya-technology/" aria-label="LinkedIn" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://twitter.com" aria-label="X / Twitter">X</a>
+        <a href="mailto:contact@siya-tech.com">contact@siya-tech.com</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e) => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const id = link.getAttribute('href');
+    if (id === '#') return;
+    const target = document.querySelector(id);
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Mobile burger menu
+const burger = document.getElementById('nav-burger');
+const mobileMenu = document.getElementById('nav-mobile');
+const closeBtn = document.getElementById('nav-close');
+
+if (burger && mobileMenu) {
+  burger.addEventListener('click', () => {
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  });
+}
+if (closeBtn && mobileMenu) {
+  closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+}
+// Fermer en cliquant un lien
+if (mobileMenu) {
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+</script>
+
+</body>
+</html>
