@@ -197,9 +197,30 @@
       <a href="design-system.html" data-page-link data-i18n="nav.style">Style</a>
     </div>
     <div class="lang-toggle" data-lang-toggle><button data-lang="fr" type="button">FR</button><button data-lang="en" type="button">EN</button></div>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/></svg>
+      Menu
+    </button>
     <a href="contact.html" class="nav-cta" data-page-link><span data-i18n="nav.contact">Nous contacter</span> ↗</a>
   </div>
 </nav>
+
+<div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="Menu">
+  <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Fermer">✕</button>
+  <a href="index.html" class="nav-mobile-link">Accueil</a>
+  <div class="nav-mobile-sublabel">Écosystème</div>
+  <div class="nav-mobile-sub">
+    <a href="soko.html">SOKO — Marketplace</a>
+    <a href="bns.html">BNS — Points relais</a>
+    <a href="mobiswift.html">MobiSwift — Paiement</a>
+    <a href="consulting.html">Consulting</a>
+  </div>
+  <a href="a-propos.html" class="nav-mobile-link" data-i18n="nav.about">À propos</a>
+  <a href="equipe.html" class="nav-mobile-link" data-i18n="nav.team">Équipe</a>
+  <div class="nav-mobile-cta">
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center" data-i18n="nav.contact">Nous contacter</a>
+  </div>
+</div>
 
 <header class="team-hero">
   <div class="container" data-reveal-stagger>
@@ -337,7 +358,7 @@
           </svg>
         </div>
         <div>
-          <div class="role">Rejoignez-nous</div>
+          <div class="role"><span data-i18n="team.recruit.role">Rejoignez-nous</span></div>
           <h5><span class="serif-italic">Nous recrutons.</span></h5>
         </div>
         <p>Talents tech et business — écrivez-nous à <a href="mailto:talents@siya-tech.com" style="color: var(--cyan); border-bottom: 1px solid var(--cyan);">talents@siya-tech.com</a>.</p>
@@ -351,8 +372,8 @@
   <div class="container">
     <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 96px;">
       <aside data-reveal>
-        <span class="eyebrow" style="color: var(--gold-deep);">Notre approche</span>
-        <h2 class="h2" style="margin-top: 20px;">Une équipe d'<span class="serif-italic">opérateurs.</span></h2>
+        <span class="eyebrow" style="color: var(--gold-deep);" data-i18n="team.approach.eyebrow">Notre approche</span>
+        <h2 class="h2" style="margin-top: 20px;"><span data-i18n="team.approach.h2">Une équipe d'<span class="serif-italic">opérateurs.</span></span></h2>
       </aside>
       <div data-reveal>
         <p style="font-family: var(--serif); font-size: clamp(20px,2vw,26px); line-height: 1.45; letter-spacing: -0.01em; color: var(--ink); max-width: 60ch;">Sept associés qui travaillent ensemble, sans hiérarchie superflue. Direction, finance, produit — chacun porte son expertise mais nous construisons d'un seul mouvement, depuis Douala et Paris. C'est ce qui nous permet de livrer vite et de décider collégialement.</p>
@@ -366,7 +387,7 @@
     <div class="footer-grid">
       <div>
         <div class="brand" style="margin-bottom: 16px;"><img src="assets/siya-logo-full.png" alt="SIYA Technology" class="brand-img" style="height: 28px;"></div>
-        <p class="body" style="max-width: 38ch;">Entreprise de services numériques fondée en 2024, incorporée au Delaware.</p>
+        <p class="body" style="max-width: 38ch;"><span data-i18n="footer.brand.desc">Entreprise de services numériques fondée en 2024, incorporée au Delaware.</span></p>
       </div>
       <div class="footer-col"><h4 data-i18n="footer.col.services">Services</h4><a href="soko.html" data-page-link>SOKO</a><a href="bns.html" data-page-link>BNS</a><a href="mobiswift.html" data-page-link>MobiSwift</a><a href="consulting.html" data-page-link>Consulting</a></div>
       <div class="footer-col"><h4 data-i18n="footer.col.house">Maison</h4><a href="a-propos.html" data-page-link data-i18n="nav.about">À propos</a><a href="equipe.html" data-page-link data-i18n="nav.team">Équipe</a><a href="contact.html" data-page-link>Contact</a><a href="design-system.html" data-page-link data-i18n="nav.style">Style</a></div>

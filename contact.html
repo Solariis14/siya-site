@@ -138,9 +138,30 @@
       <a href="design-system.html" data-page-link data-i18n="nav.style">Style</a>
     </div>
     <div class="lang-toggle" data-lang-toggle><button data-lang="fr" type="button">FR</button><button data-lang="en" type="button">EN</button></div>
+    <button class="nav-burger" id="nav-burger" aria-label="Menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="2" y1="5" x2="18" y2="5"/><line x1="2" y1="10" x2="18" y2="10"/><line x1="2" y1="15" x2="18" y2="15"/></svg>
+      Menu
+    </button>
     <a href="contact.html" class="nav-cta" aria-current="page" data-page-link><span data-i18n="nav.contact">Nous contacter</span> ↗</a>
   </div>
 </nav>
+
+<div class="nav-mobile" id="nav-mobile" role="dialog" aria-label="Menu">
+  <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Fermer">✕</button>
+  <a href="index.html" class="nav-mobile-link">Accueil</a>
+  <div class="nav-mobile-sublabel">Écosystème</div>
+  <div class="nav-mobile-sub">
+    <a href="soko.html">SOKO — Marketplace</a>
+    <a href="bns.html">BNS — Points relais</a>
+    <a href="mobiswift.html">MobiSwift — Paiement</a>
+    <a href="consulting.html">Consulting</a>
+  </div>
+  <a href="a-propos.html" class="nav-mobile-link" data-i18n="nav.about">À propos</a>
+  <a href="equipe.html" class="nav-mobile-link" data-i18n="nav.team">Équipe</a>
+  <div class="nav-mobile-cta">
+    <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center" data-i18n="nav.contact">Nous contacter</a>
+  </div>
+</div>
 
 <div class="contact-wrap">
   <!-- LEFT -->
