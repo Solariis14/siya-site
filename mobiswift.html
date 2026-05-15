@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MobiSwift — Wallet · SIYA Technology</title>
+<link rel="stylesheet" href="assets/siya.css">
+<style>
+  .svc-hero { padding: clamp(64px,8vw,120px) 0 clamp(56px,7vw,96px); position: relative; overflow: hidden; }
+  .svc-hero .grid-12 { align-items: end; }
+  .svc-hero-text { grid-column: 1 / span 7; }
+  .svc-hero-vis { grid-column: 8 / span 5; }
+  .svc-num { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; color: var(--cyan); text-transform: uppercase; margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
+  .svc-num::before { content: ""; width: 28px; height: 1px; background: currentColor; }
+  .svc-name { font-family: var(--serif); font-size: clamp(56px, 10vw, 144px); font-weight: 320; line-height: 0.9; letter-spacing: -0.035em; margin-bottom: 24px; font-variation-settings: "opsz" 144, "SOFT" 50; }
+  .svc-name .italic { font-style: italic; }
+  .svc-tag { font-family: var(--mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 32px; display: inline-flex; gap: 12px; align-items: center; border: 1px solid var(--light-20); padding: 8px 14px; border-radius: 999px; }
+  .svc-tag .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); }
+  .svc-lede { font-family: var(--serif); font-size: clamp(22px, 2.4vw, 32px); line-height: 1.3; letter-spacing: -0.012em; max-width: 28ch; font-weight: 380; }
+  .svc-meta { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--light-10); display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .svc-meta > div { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--light-60); text-transform: uppercase; }
+  .svc-meta > div strong { display: block; font-family: var(--serif); font-style: italic; font-size: 24px; color: var(--ivory); margin-top: 6px; letter-spacing: -0.01em; text-transform: none; font-weight: 400; }
+
+  /* Wallet mock */
+  .wallet-mock {
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+    aspect-ratio: 9 / 16;
+    background: linear-gradient(160deg, #0a1428 0%, #18274a 100%);
+    border-radius: 32px;
+    border: 1px solid var(--light-20);
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 60px 120px -40px rgba(0,0,0,0.7), 0 0 0 1px rgba(110,196,245,0.08);
+  }
+  .wallet-mock::before { content: ""; position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 80px; height: 6px; background: rgba(0,0,0,0.4); border-radius: 6px; }
+  .wallet-mock .status { position: absolute; top: 14px; left: 24px; font-family: var(--mono); font-size: 9px; letter-spacing: 1.5px; color: var(--light-60); }
+  .wallet-mock .status-r { left: auto; right: 24px; }
+  .wallet-card {
+    margin-top: 40px;
+    aspect-ratio: 1.586;
+    border-radius: 16px;
+    background: linear-gradient(140deg, #d4ad7c 0%, #6ec4f5 100%);
+    padding: 20px;
+    color: #0a1428;
+    position: relative;
+    overflow: hidden;
+  }
+  .wallet-card .chip {
+    width: 32px; height: 24px;
+    background: linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.05));
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .wallet-card .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.3em; }
+  .wallet-card .name { font-family: var(--mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; margin-top: 6px; }
+  .wallet-card .brand-mw { position: absolute; top: 16px; right: 16px; font-family: var(--serif); font-style: italic; font-size: 18px; letter-spacing: -0.01em; }
+  .balance { margin-top: 24px; }
+  .balance .label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; color: var(--light-60); text-transform: uppercase; }
+  .balance .v { font-family: var(--serif); font-style: italic; font-size: 38px; color: var(--ivory); line-height: 1; margin-top: 6px; font-weight: 400; letter-spacing: -0.02em; }
+  .balance .v small { font-family: var(--mono); font-style: normal; font-size: 11px; letter-spacing: 0.06em; color: var(--light-60); margin-left: 4px; }
+  .tx { margin-top: 16px; padding: 10px 12px; border-radius: 8px; background: rgba(245,241,234,0.04); display: flex; justify-content: space-between; align-items: center; font-size: 11px; }
+  .tx .lbl { color: var(--light-60); font-family: var(--mono); letter-spacing: 0.08em; font-size: 9px; text-transform: uppercase; }
+  .tx .nm { color: var(--ivory); font-family: var(--serif); font-style: italic; font-size: 13px; margin-top: 2px; }
+  .tx .am { font-family: var(--serif); color: var(--cyan); font-size: 14px; font-style: italic; }
+  .tx .am.out { color: var(--gold); }
+
+  @media (max-width: 880px) {
+    .svc-hero-text, .svc-hero-vis { grid-column: 1 / -1; }
+    .svc-hero-vis { margin-top: 32px; }
+    .svc-meta { grid-template-columns: 1fr 1fr; }
+  }
+
+  /* Roadmap */
+  .roadmap { position: relative; padding: clamp(64px,9vw,120px) 0; }
+  .road-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0; margin-top: 56px; }
+  .road-cell { padding: 40px 28px 56px; border: 1px solid var(--hair); margin-left: -1px; margin-top: -1px; position: relative; min-height: 280px; }
+  .road-cell .when { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--cyan-deep); margin-bottom: 24px; }
+  .road-cell h4 { font-family: var(--serif); font-size: 22px; letter-spacing: -0.015em; font-weight: 400; margin-bottom: 12px; }
+  .road-cell p { color: var(--ink-60); font-size: 14px; line-height: 1.55; }
+  .road-cell .badge { position: absolute; top: 20px; right: 20px; font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--ink-20); color: var(--ink-60); }
+  .road-cell.now .badge { color: var(--cyan-deep); border-color: var(--cyan-deep); }
+  .road-cell.now { background: rgba(110,196,245,0.04); }
+  @media (max-width: 880px) {
+    .road-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 520px) {
+    .road-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Features */
+  .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 56px; border-top: 1px solid var(--light-10); }
+  .feat { padding: 48px 32px; border-right: 1px solid var(--light-10); border-bottom: 1px solid var(--light-10); }
+  .feat:nth-child(3n) { border-right: 0; }
+  .feat .icon { width: 40px; height: 40px; margin-bottom: 28px; }
+  .feat h4 { font-family: var(--serif); font-size: 22px; letter-spacing: -0.015em; font-weight: 400; margin-bottom: 10px; }
+  .feat p { color: var(--light-60); font-size: 14px; line-height: 1.6; }
+  @media (max-width: 760px) { .feat-grid { grid-template-columns: 1fr; } .feat { border-right: 0; } }
+</style>
+</head>
+<body class="surface-dark" data-screen-label="MobiSwift">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand" data-page-link aria-label="SIYA Technology — Accueil"><img src="assets/siya-logo-full.png" alt="SIYA Technology" class="brand-img"></a>
+    <div class="nav-links">
+      <a href="index.html#ecosysteme" data-page-link data-i18n="nav.eco">Écosystème</a>
+      <a href="a-propos.html" data-page-link data-i18n="nav.about">À propos</a>
+      <a href="equipe.html" data-page-link data-i18n="nav.team">Équipe</a>
+      <a href="design-system.html" data-page-link data-i18n="nav.style">Style</a>
+    </div>
+    <div class="lang-toggle" data-lang-toggle><button data-lang="fr" type="button">FR</button><button data-lang="en" type="button">EN</button></div>
+    <a href="contact.html" class="nav-cta" data-page-link><span data-i18n="nav.contact">Nous contacter</span> ↗</a>
+  </div>
+</nav>
+
+<header class="svc-hero">
+  <div class="glow-cyan" style="top: -100px; left: -120px;"></div>
+  <div class="glow-gold" style="bottom: -100px; right: -120px;"></div>
+  <div class="container">
+    <div class="grid-12">
+      <div class="svc-hero-text" data-reveal-stagger>
+        <img class="svc-hero-logo" src="assets/logo-mobiswift.png" alt="MobiSwift" /><div class="svc-num">Service 03 · Paiement</div>
+        <h1 class="svc-name">Mobi<span class="italic">Swift</span>.</h1>
+        <div class="svc-tag"><span class="dot"></span> Horizon long · Bêta 2027</div>
+        <p class="svc-lede">Le futur portefeuille mobile interopérable de SIYA. <span class="serif-italic" style="color: var(--cyan);">Intégré nativement</span> à SOKO et BNS, construit avec discipline après la consolidation marketplace+livraison.</p>
+        <div class="svc-meta">
+          <div>Statut<strong>En préparation</strong></div>
+          <div>Modèle<strong>Grand public</strong></div>
+          <div>Lien SOKO<strong>Indépendant</strong></div>
+          <div>Agrément<strong>COBAC en instruction</strong></div>
+        </div>
+      </div>
+      <div class="svc-hero-vis" aria-hidden="true">
+        <div class="wallet-mock">
+          <div class="status">09:41</div>
+          <div class="status status-r">●●● 5G ■</div>
+          <div class="wallet-card">
+            <div class="chip"></div>
+            <div class="num">4218 ·· ·· 0729</div>
+            <div class="name">Aïcha · Tchamba</div>
+            <div class="brand-mw">MobiSwift.</div>
+          </div>
+          <div class="balance">
+            <div class="label">— Solde disponible</div>
+            <div class="v">128 540<small>FCFA</small></div>
+          </div>
+          <div class="tx">
+            <div><div class="lbl">— SOKO · achat</div><div class="nm">Pagne wax</div></div>
+            <div class="am out">− 12 500</div>
+          </div>
+          <div class="tx">
+            <div><div class="lbl">— SIYA · transfert</div><div class="nm">Reçu Christian</div></div>
+            <div class="am">+ 50 000</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Vision -->
+<section class="section surface-light roadmap">
+  <div class="container">
+    <div data-reveal>
+      <span class="eyebrow" style="color: var(--gold-deep);">— Vision</span>
+      <h2 class="h1" style="margin-top: 20px; max-width: 22ch;">Un wallet africain <span class="serif-italic">grand public,</span> conçu pour la réalité du continent.</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 56px; align-items: start;" data-reveal-stagger>
+      <div>
+        <p style="font-family: var(--serif); font-size: clamp(20px,2vw,26px); line-height: 1.45; letter-spacing: -0.01em; color: var(--ink); max-width: 50ch;">MobiSwift sera un portefeuille mobile <span class="serif-italic" style="color: var(--gold-deep);">simple, sûr, accessible</span> — conçu pour les usages quotidiens et pensé pour s'intégrer naturellement à l'écosystème africain du Mobile Money.</p>
+      </div>
+      <div>
+        <p style="color: var(--ink-60); line-height: 1.7; font-size: 16px;">L'agrément réglementaire est en cours d'instruction auprès de la COBAC. MobiSwift est un service financier grand public, indépendant de SOKO et de l'écosystème marchand. Les conditions, la couverture et la date de lancement seront communiquées à l'ouverture.</p>
+        <a class="btn btn-ghost" href="contact.html" data-page-link style="margin-top: 32px;">Être tenu informé →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section surface-dark">
+  <div class="container">
+    <div data-reveal>
+      <span class="eyebrow">— Principes de conception</span>
+      <h2 class="h1" style="margin-top: 20px; max-width: 22ch;">Un portefeuille <span class="serif-italic">simple,</span> conçu pour <span class="outline">l'usage quotidien.</span></h2>
+    </div>
+    <div class="feat-grid" data-reveal-stagger>
+      <div class="feat">
+        <svg class="icon" viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="none" stroke="#6ec4f5"/><circle cx="20" cy="20" r="4" fill="#6ec4f5"/></svg>
+        <h4>Solde unifié</h4>
+        <p>Un seul solde pour vos transactions quotidiennes — simple à alimenter, simple à utiliser.</p>
+      </div>
+      <div class="feat">
+        <svg class="icon" viewBox="0 0 40 40"><path d="M10 28L20 10L30 28Z" fill="none" stroke="#d4ad7c"/><circle cx="20" cy="22" r="2" fill="#d4ad7c"/></svg>
+        <h4>Sécurité native</h4>
+        <p>Conformité réglementaire, authentification renforcée, protection des fonds — dès l'ouverture.</p>
+      </div>
+      <div class="feat">
+        <svg class="icon" viewBox="0 0 40 40"><rect x="6" y="14" width="28" height="20" rx="2" fill="none" stroke="#f5f1ea"/><circle cx="13" cy="24" r="2" fill="#f5f1ea"/><circle cx="20" cy="24" r="2" fill="#f5f1ea"/><circle cx="27" cy="24" r="2" fill="#f5f1ea"/></svg>
+        <h4>Pensé mobile-first</h4>
+        <p>Interface conçue pour les terminaux et les réseaux du continent. Performant en mode dégradé.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer surface-dark">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 16px;"><img src="assets/siya-logo-full.png" alt="SIYA Technology" class="brand-img" style="height: 28px;"></div>
+        <p class="body" style="max-width: 38ch;">Entreprise de services numériques fondée en 2024, incorporée au Delaware.</p>
+      </div>
+      <div class="footer-col"><h4 data-i18n="footer.col.services">Services</h4><a href="soko.html" data-page-link>SOKO</a><a href="bns.html" data-page-link>BNS</a><a href="mobiswift.html" data-page-link>MobiSwift</a><a href="consulting.html" data-page-link>Consulting</a></div>
+      <div class="footer-col"><h4 data-i18n="footer.col.house">Maison</h4><a href="a-propos.html" data-page-link data-i18n="nav.about">À propos</a><a href="equipe.html" data-page-link data-i18n="nav.team">Équipe</a><a href="contact.html" data-page-link>Contact</a><a href="design-system.html" data-page-link data-i18n="nav.style">Style</a></div>
+      <div class="footer-col"><h4 data-i18n="footer.col.legal">Légal</h4><a>Mentions</a><a>Confidentialité</a><a>Conditions</a></div>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">MobiSwift.</div>
+    <div class="footer-base"><span data-i18n-html="footer.copyright">© <span data-year></span> SIYA Technology Corp. — Delaware</span><span data-i18n="footer.version">v1.1 · Refonte 2026</span></div>
+  </div>
+</footer>
+
+<script src="assets/siya.js" defer></script>
+<script src="assets/i18n.js" defer></script>
+</body>
+</html>

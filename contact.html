@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact — SIYA Technology</title>
+<link rel="stylesheet" href="assets/siya.css">
+<style>
+  .contact-wrap {
+    min-height: calc(100vh - 72px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact-left {
+    background: var(--navy-800);
+    color: var(--ivory);
+    padding: clamp(64px,8vw,120px) clamp(40px,5vw,80px);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
+  .contact-left .display { max-width: 12ch; }
+  .contact-left .lede { margin-top: 32px; max-width: 42ch; color: var(--light-60); }
+  .channels { margin-top: 64px; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--light-10); }
+  .channel {
+    padding: 28px 0;
+    border-bottom: 1px solid var(--light-10);
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 24px;
+    align-items: center;
+    transition: padding .3s;
+    cursor: pointer;
+  }
+  .channel:hover { padding-left: 12px; }
+  .channel .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--cyan); }
+  .channel .label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--light-60); text-transform: uppercase; }
+  .channel .val { font-family: var(--serif); font-size: 22px; letter-spacing: -0.012em; font-weight: 400; margin-top: 4px; }
+  .channel .arr { font-family: var(--mono); font-size: 14px; color: var(--cyan); transition: transform .3s; }
+  .channel:hover .arr { transform: translateX(6px); }
+  .locations-mini {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--light-10);
+  }
+  .locations-mini > div { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; color: var(--light-60); text-transform: uppercase; }
+  .locations-mini > div strong { display: block; font-family: var(--serif); font-style: italic; font-size: 20px; color: var(--ivory); margin-top: 4px; letter-spacing: -0.01em; text-transform: none; font-weight: 400; }
+
+  .contact-right {
+    padding: clamp(64px,8vw,120px) clamp(40px,5vw,80px);
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .form-shell { max-width: 520px; }
+  .form-shell h2 {
+    font-family: var(--serif);
+    font-size: clamp(26px,3vw,36px);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+    font-weight: 380;
+  }
+  .form-shell p.sub { color: var(--ink-60); margin-bottom: 40px; }
+  .field { margin-bottom: 24px; position: relative; }
+  .field label {
+    display: block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin-bottom: 10px;
+  }
+  .field input, .field textarea, .field select {
+    width: 100%;
+    border: 0;
+    border-bottom: 1px solid var(--ink-20);
+    background: transparent;
+    padding: 8px 0 12px;
+    font-family: var(--sans);
+    font-size: 16px;
+    color: var(--ink);
+    transition: border-color .3s;
+    border-radius: 0;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: 0;
+    border-bottom-color: var(--cyan-deep);
+  }
+  .field textarea { resize: vertical; min-height: 96px; line-height: 1.5; }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .interests {
+    display: flex; flex-wrap: wrap; gap: 8px;
+  }
+  .interest-chip {
+    padding: 8px 14px;
+    border: 1px solid var(--ink-20);
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all .2s;
+    user-select: none;
+  }
+  .interest-chip:hover { border-color: var(--ink); }
+  .interest-chip.active { background: var(--navy-800); color: var(--ivory); border-color: var(--navy-800); }
+  .submit-row { display: flex; gap: 16px; align-items: center; margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--hair); flex-wrap: wrap; }
+  .submit-row .note { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--ink-60); }
+
+  @media (max-width: 880px) {
+    .contact-wrap { grid-template-columns: 1fr; }
+    .contact-left { min-height: auto; }
+    .field-row { grid-template-columns: 1fr; }
+    .locations-mini { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body class="surface-light" data-screen-label="Contact">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand" data-page-link aria-label="SIYA Technology — Accueil"><img src="assets/siya-logo-full.png" alt="SIYA Technology" class="brand-img"></a>
+    <div class="nav-links">
+      <a href="index.html#ecosysteme" data-page-link data-i18n="nav.eco">Écosystème</a>
+      <a href="a-propos.html" data-page-link data-i18n="nav.about">À propos</a>
+      <a href="equipe.html" data-page-link data-i18n="nav.team">Équipe</a>
+      <a href="design-system.html" data-page-link data-i18n="nav.style">Style</a>
+    </div>
+    <div class="lang-toggle" data-lang-toggle><button data-lang="fr" type="button">FR</button><button data-lang="en" type="button">EN</button></div>
+    <a href="contact.html" class="nav-cta" aria-current="page" data-page-link><span data-i18n="nav.contact">Nous contacter</span> ↗</a>
+  </div>
+</nav>
+
+<div class="contact-wrap">
+  <!-- LEFT -->
+  <aside class="contact-left">
+    <div class="glow-cyan" style="top: -160px; right: -160px;"></div>
+    <div data-reveal-stagger>
+      <span class="eyebrow">Prenez contact</span>
+      <h1 class="display" style="margin-top: 32px; font-size: clamp(48px, 6vw, 88px);" data-parallax="0.03">
+        <span style="display:block;">Travaillons</span>
+        <span style="display:block;"><span class="italic">ensemble.</span></span>
+      </h1>
+      <p class="lede">Investisseur, partenaire opérateur, institution financière ou client Consulting — nous sommes disponibles pour échanger. Réponse sous 48 heures ouvrées.</p>
+
+      <div class="channels">
+        <div class="channel">
+          <span class="num">— 01</span>
+          <div><div class="label">Email général</div><div class="val">contact@siya-tech.com</div></div>
+          <span class="arr">↗</span>
+        </div>
+        <div class="channel">
+          <span class="num">— 02</span>
+          <div><div class="label">Partenariats opérateurs</div><div class="val">partenariats@siya-tech.com</div></div>
+          <span class="arr">↗</span>
+        </div>
+        <div class="channel">
+          <span class="num">— 03</span>
+          <div><div class="label">Investisseurs · Fonds</div><div class="val">investisseurs@siya-tech.com</div></div>
+          <span class="arr">↗</span>
+        </div>
+        <div class="channel">
+          <span class="num">— 04</span>
+          <div><div class="label">Carrières</div><div class="val">talents@siya-tech.com</div></div>
+          <span class="arr">↗</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="locations-mini" data-reveal>
+      <div>Cameroun<strong>Douala</strong></div>
+      <div>France<strong>Paris</strong></div>
+      <div>USA<strong>Wilmington, DE</strong></div>
+    </div>
+  </aside>
+
+  <!-- RIGHT -->
+  <section class="contact-right">
+    <div class="form-shell" data-reveal-stagger>
+      <span class="eyebrow" style="color: var(--gold-deep);">Formulaire</span>
+      <h2 style="margin-top: 16px;">Dites-nous <span class="serif-italic">qui</span> vous êtes.</h2>
+      <p class="sub">Quelques informations pour qu'on puisse vous répondre vite et bien.</p>
+
+      <form onsubmit="event.preventDefault(); document.getElementById('thanks').hidden = false; this.hidden = true;">
+        <div class="field">
+          <label>Vous êtes</label>
+          <div class="interests" id="role-chips">
+            <span class="interest-chip active">Investisseur</span>
+            <span class="interest-chip">Partenaire</span>
+            <span class="interest-chip">Opérateur MoMo / Banque</span>
+            <span class="interest-chip">Client Consulting</span>
+            <span class="interest-chip">Vendeur SOKO</span>
+            <span class="interest-chip">Candidat</span>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field"><label>Prénom · Nom</label><input type="text" placeholder="Aïcha Tchamba" required></div>
+          <div class="field"><label>Société</label><input type="text" placeholder="Atelier Tchamba SARL"></div>
+        </div>
+
+        <div class="field-row">
+          <div class="field"><label>Email</label><input type="email" placeholder="a.tchamba@…" required></div>
+          <div class="field"><label>Téléphone</label><input type="tel" placeholder="+237 6 …"></div>
+        </div>
+
+        <div class="field">
+          <label>Service concerné</label>
+          <select>
+            <option>SOKO — Marketplace</option>
+            <option>BNS — Livraison</option>
+            <option>MobiSwift — Paiement</option>
+            <option>Consulting — Dev sur mesure</option>
+            <option>Autre / général</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Votre message</label>
+          <textarea placeholder="Présentez votre projet ou votre demande en quelques lignes…" required></textarea>
+        </div>
+
+        <div class="submit-row">
+          <button type="submit" class="btn btn-primary">Envoyer le message →</button>
+          <span class="note">Réponse sous 48h ouvrées · FR · EN</span>
+        </div>
+      </form>
+
+      <div id="thanks" hidden style="padding: 32px; border: 1px solid var(--cyan); border-radius: 8px; background: rgba(110,196,245,0.06);">
+        <span class="eyebrow" style="color: var(--cyan-deep);">Reçu ↗</span>
+        <h2 style="margin-top: 12px;">Merci — message envoyé.</h2>
+        <p style="margin-top: 12px; color: var(--ink-60);">L'associé concerné vous répond sous 48h ouvrées.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script src="assets/siya.js" defer></script>
+<script src="assets/i18n.js" defer></script>
+<script>
+  document.querySelectorAll('#role-chips .interest-chip').forEach(c => {
+    c.addEventListener('click', () => {
+      document.querySelectorAll('#role-chips .interest-chip').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>

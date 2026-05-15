@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Refonte SIYA — Overview</title>
+<link rel="stylesheet" href="assets/siya.css">
+<style>
+  html, body { background: #0a1428; color: #f5f1ea; height: 100%; }
+  body { overflow: hidden; }
+  .ov-topbar {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 14px 24px;
+    background: rgba(10,20,40,0.78);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(245,241,234,0.10);
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px;
+  }
+  .ov-topbar .ovbrand { display: flex; align-items: center; gap: 12px; font-family: 'Fraunces', serif; font-size: 18px; }
+  .ov-topbar .mark { width: 22px; height: 20px; background-image: url('assets/siya-mark.svg'); background-size: contain; background-repeat: no-repeat; background-position: center; flex-shrink: 0; }
+  .ov-topbar .meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(245,241,234,0.55); }
+  .ov-topbar .hint { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.12em; color: rgba(245,241,234,0.55); display: flex; align-items: center; gap: 12px; }
+  .ov-topbar .hint kbd {
+    display: inline-block; padding: 2px 8px; border: 1px solid rgba(245,241,234,0.18);
+    border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px;
+  }
+  .ov-canvas-wrap { position: absolute; inset: 56px 0 0 0; }
+
+  /* Inside artboards */
+  .ab-frame {
+    position: relative; width: 100%; height: 100%;
+    background: #faf7f2;
+    overflow: hidden;
+  }
+  .ab-frame iframe { border: 0; display: block; }
+  .ab-desk iframe { width: 1440px; height: 100%; transform-origin: top left; }
+  .ab-mobile iframe { width: 390px; height: 100%; }
+
+  /* Chrome bars for desktop browser feel */
+  .chrome {
+    position: relative; background: linear-gradient(180deg, #ece6dc, #d6cfc1);
+    padding: 8px 14px; display: flex; gap: 6px; align-items: center;
+    border-bottom: 1px solid rgba(10,20,40,0.12);
+  }
+  .chrome .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(10,20,40,0.18); }
+  .chrome .url { margin-left: 16px; flex: 1; padding: 4px 10px; background: rgba(255,255,255,0.6); border-radius: 4px; font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(10,20,40,0.65); letter-spacing: 0.04em; }
+  .ab-content { width: 100%; height: calc(100% - 28px); overflow: hidden; }
+
+  /* Mobile bezel */
+  .phone {
+    width: 100%; height: 100%;
+    background: #0a1428;
+    padding: 12px;
+    box-sizing: border-box;
+    display: flex; flex-direction: column;
+  }
+  .phone .screen {
+    flex: 1;
+    background: #faf7f2;
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+  }
+  .phone .notch {
+    position: absolute; top: 8px; left: 50%; transform: translateX(-50%);
+    width: 80px; height: 22px; background: #0a1428; border-radius: 12px; z-index: 5;
+  }
+  .phone .screen iframe {
+    width: 390px;
+    height: 100%;
+    transform-origin: top left;
+  }
+
+  /* DS card */
+  .ds-card-art {
+    width: 100%; height: 100%;
+    padding: 56px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: #faf7f2;
+  }
+  .ds-card-art h2 { font-family: 'Fraunces', serif; font-size: 48px; font-weight: 350; letter-spacing: -0.02em; line-height: 1; }
+  .ds-card-art .palette { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 32px 0; }
+  .ds-card-art .sw { aspect-ratio: 1.4; border-radius: 6px; display: flex; align-items: flex-end; padding: 12px; font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.08em; }
+  .ds-card-art .type-spec { padding: 24px 0; border-top: 1px solid rgba(10,20,40,0.1); display: flex; justify-content: space-between; align-items: baseline; }
+  .ds-card-art .type-spec .demo { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 350; }
+
+  /* Intro card */
+  .intro-card {
+    width: 100%; height: 100%;
+    padding: 56px;
+    box-sizing: border-box;
+    overflow: hidden;
+    background: #0a1428;
+    color: #f5f1ea;
+    display: flex; flex-direction: column; justify-content: space-between;
+    position: relative;
+  }
+  .intro-card .eyebrow { font-family: 'JetBrains Mono'; font-size: 11px; letter-spacing: 0.18em; color: #6ec4f5; text-transform: uppercase; }
+  .intro-card h2 { font-family: 'Fraunces', serif; font-size: 56px; font-weight: 320; letter-spacing: -0.025em; line-height: 1; margin: 24px 0; }
+  .intro-card h2 .italic { font-style: italic; }
+  .intro-card h2 .outline { -webkit-text-stroke: 1px currentColor; -webkit-text-fill-color: transparent; font-style: italic; }
+  .intro-card p { font-family: 'Inter'; font-size: 15px; line-height: 1.55; color: rgba(245,241,234,0.65); max-width: 44ch; }
+  .intro-card .grid-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 24px; border-top: 1px solid rgba(245,241,234,0.1); }
+  .intro-card .stat { font-family: 'JetBrains Mono'; font-size: 10px; letter-spacing: 0.12em; color: rgba(245,241,234,0.55); text-transform: uppercase; }
+  .intro-card .stat strong { display: block; font-family: 'Fraunces', serif; font-style: italic; font-size: 22px; color: #f5f1ea; margin-top: 4px; text-transform: none; letter-spacing: -0.01em; font-weight: 400; }
+  .intro-card .glow { position: absolute; width: 320px; height: 320px; top: -120px; right: -100px; background: radial-gradient(circle, rgba(110,196,245,0.25), transparent 65%); filter: blur(20px); }
+
+  /* Moodboard */
+  .mood-art {
+    width: 100%; height: 100%;
+    background: #0a1428;
+    color: #f5f1ea;
+    padding: 48px;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr;
+    gap: 16px;
+    position: relative;
+  }
+  .mood-art h2 { grid-column: 1 / -1; font-family: 'Fraunces', serif; font-size: 42px; font-weight: 320; letter-spacing: -0.025em; line-height: 1; }
+  .mood-art .tile { border: 1px solid rgba(245,241,234,0.10); border-radius: 8px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .mood-art .tile .tag { font-family: 'JetBrains Mono'; font-size: 9px; letter-spacing: 0.14em; color: rgba(245,241,234,0.55); text-transform: uppercase; }
+  .mood-art .tile .nm { font-family: 'Fraunces', serif; font-style: italic; font-size: 22px; letter-spacing: -0.01em; margin-top: 8px; }
+  .mood-art .tile.cyan { background: linear-gradient(140deg, rgba(110,196,245,0.18), transparent); }
+  .mood-art .tile.gold { background: linear-gradient(140deg, rgba(212,173,124,0.16), transparent); }
+  .mood-art .tile.big { grid-column: span 2; }
+</style>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+</head>
+<body>
+
+<div class="ov-topbar">
+  <div class="ovbrand"><span class="mark"></span> SIYA <span style="opacity:.5; font-family:'JetBrains Mono'; font-size:10px; letter-spacing:.18em; text-transform:uppercase; margin-left: 6px;">Refonte Overview</span></div>
+  <div class="meta">8 pages · Desktop + Mobile · Design System</div>
+  <div class="hint">Drag · <kbd>⌘</kbd>+Scroll to zoom · Click an artboard to focus</div>
+</div>
+
+<div class="ov-canvas-wrap" id="canvas-root"></div>
+
+<script type="text/babel">
+const { DesignCanvas, DCSection, DCArtboard } = window;
+
+function DesktopArt({ src, page }) {
+  return (
+    <div className="ab-frame ab-desk">
+      <div className="chrome">
+        <span className="dot" style={{ background: '#e25e54' }}></span>
+        <span className="dot" style={{ background: '#f5b540' }}></span>
+        <span className="dot" style={{ background: '#54c560' }}></span>
+        <span className="url">siya-tech.com / {page}</span>
+      </div>
+      <div className="ab-content">
+        <iframe src={src} scrolling="yes" loading="lazy" />
+      </div>
+    </div>
+  );
+}
+
+function MobileArt({ src }) {
+  return (
+    <div className="ab-frame ab-mobile">
+      <div className="phone">
+        <div className="screen">
+          <div className="notch"></div>
+          <iframe src={src} scrolling="yes" loading="lazy" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function IntroCard() {
+  return (
+    <div className="intro-card">
+      <div className="glow"></div>
+      <div>
+        <span className="eyebrow">— Refonte 2026 · v1.1</span>
+        <h2>L'écosystème <span className="italic">numérique</span> du <span className="outline">commerce africain.</span></h2>
+        <p>Refonte complète du site corporate SIYA Technology — 8 pages, design system, illustrations SVG animées et écosystème interactif. Implémentable directement en HTML / CSS / JS vanilla.</p>
+      </div>
+      <div className="grid-stats">
+        <div className="stat">Services<strong>04</strong></div>
+        <div className="stat">Associés<strong>07</strong></div>
+        <div className="stat">Pays cibles<strong>11+</strong></div>
+        <div className="stat">Modèle<strong>100% no-cash</strong></div>
+      </div>
+    </div>
+  );
+}
+
+function Moodboard() {
+  return (
+    <div className="mood-art">
+      <h2>Direction <span style={{fontStyle:'italic'}}>artistique.</span></h2>
+      <div className="tile big" style={{ background: '#0a1428' }}>
+        <span className="tag">— Navy 900 · Dominante</span>
+        <div className="nm" style={{ color: '#f5f1ea' }}>Profondeur silencieuse</div>
+      </div>
+      <div className="tile cyan">
+        <span className="tag">— Cyan</span>
+        <div className="nm">Accent froid</div>
+      </div>
+      <div className="tile gold">
+        <span className="tag">— Gold</span>
+        <div className="nm">Détail éditorial</div>
+      </div>
+      <div className="tile" style={{ background: '#f5f1ea', color: '#0a1428', borderColor: 'transparent' }}>
+        <span className="tag" style={{ color: 'rgba(10,20,40,0.55)' }}>— Ivory</span>
+        <div className="nm">Contre-jour chaud</div>
+      </div>
+      <div className="tile" style={{ borderColor: 'rgba(110,196,245,0.4)' }}>
+        <span className="tag">— Hairlines</span>
+        <div className="nm">1px de précision</div>
+      </div>
+    </div>
+  );
+}
+
+function DSCard() {
+  return (
+    <div className="ds-card-art">
+      <span style={{ fontFamily: 'JetBrains Mono', fontSize: 11, letterSpacing: '0.16em', color: '#b58a55', textTransform: 'uppercase' }}>— Design System</span>
+      <h2 style={{ marginTop: 16 }}>Tokens, type, motion.</h2>
+      <div className="palette">
+        <div className="sw" style={{ background: '#0a1428', color: '#f5f1ea' }}>NAVY · 0A1428</div>
+        <div className="sw" style={{ background: '#6ec4f5', color: '#0a1428' }}>CYAN · 6EC4F5</div>
+        <div className="sw" style={{ background: '#d4ad7c', color: '#0a1428' }}>GOLD · D4AD7C</div>
+      </div>
+      <div className="type-spec">
+        <div className="demo">Fraunces — <span style={{fontStyle:'italic'}}>display</span></div>
+        <div style={{ fontFamily: 'JetBrains Mono', fontSize: 11, color: 'rgba(10,20,40,0.55)' }}>350 · -0.025em</div>
+      </div>
+      <div className="type-spec">
+        <div className="demo" style={{ fontFamily: 'Inter', fontSize: 22, fontWeight: 400 }}>Inter — interface</div>
+        <div style={{ fontFamily: 'JetBrains Mono', fontSize: 11, color: 'rgba(10,20,40,0.55)' }}>400 / 500</div>
+      </div>
+      <div className="type-spec">
+        <div className="demo" style={{ fontFamily: 'JetBrains Mono', fontSize: 16 }}>JetBrains Mono — eyebrow</div>
+        <div style={{ fontFamily: 'JetBrains Mono', fontSize: 11, color: 'rgba(10,20,40,0.55)' }}>11px · 0.14em</div>
+      </div>
+    </div>
+  );
+}
+
+function App() {
+  return (
+    <DesignCanvas style={{ background: '#0a1428' }}>
+      <DCSection id="intro" title="Refonte SIYA · 2026" subtitle="Manifeste visuel + direction artistique">
+        <DCArtboard id="cover" label="A · Cover" width={520} height={680}>
+          <IntroCard />
+        </DCArtboard>
+        <DCArtboard id="mood" label="B · Moodboard" width={680} height={680}>
+          <Moodboard />
+        </DCArtboard>
+        <DCArtboard id="ds" label="C · Design System" width={520} height={680}>
+          <DSCard />
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="desktop" title="Pages · Desktop" subtitle="1440px · Cliquer un artboard pour focus">
+        <DCArtboard id="d-home" label="01 · Accueil" width={720} height={900}>
+          <DesktopArt src="index.html" page="" />
+        </DCArtboard>
+        <DCArtboard id="d-about" label="02 · À propos" width={720} height={900}>
+          <DesktopArt src="a-propos.html" page="a-propos" />
+        </DCArtboard>
+        <DCArtboard id="d-team" label="03 · Équipe" width={720} height={900}>
+          <DesktopArt src="equipe.html" page="equipe" />
+        </DCArtboard>
+        <DCArtboard id="d-soko" label="04 · SOKO" width={720} height={900}>
+          <DesktopArt src="soko.html" page="soko" />
+        </DCArtboard>
+        <DCArtboard id="d-bns" label="05 · BNS" width={720} height={900}>
+          <DesktopArt src="bns.html" page="bns" />
+        </DCArtboard>
+        <DCArtboard id="d-mob" label="06 · MobiSwift" width={720} height={900}>
+          <DesktopArt src="mobiswift.html" page="mobiswift" />
+        </DCArtboard>
+        <DCArtboard id="d-con" label="07 · Consulting" width={720} height={900}>
+          <DesktopArt src="consulting.html" page="consulting" />
+        </DCArtboard>
+        <DCArtboard id="d-contact" label="08 · Contact" width={720} height={900}>
+          <DesktopArt src="contact.html" page="contact" />
+        </DCArtboard>
+        <DCArtboard id="d-ds" label="09 · Style guide" width={720} height={900}>
+          <DesktopArt src="design-system.html" page="style" />
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="mobile" title="Pages · Mobile · iPhone 14" subtitle="390px viewport · scroll inside frame">
+        <DCArtboard id="m-home" label="01 · Accueil" width={300} height={620}>
+          <MobileArt src="index.html" />
+        </DCArtboard>
+        <DCArtboard id="m-about" label="02 · À propos" width={300} height={620}>
+          <MobileArt src="a-propos.html" />
+        </DCArtboard>
+        <DCArtboard id="m-team" label="03 · Équipe" width={300} height={620}>
+          <MobileArt src="equipe.html" />
+        </DCArtboard>
+        <DCArtboard id="m-soko" label="04 · SOKO" width={300} height={620}>
+          <MobileArt src="soko.html" />
+        </DCArtboard>
+        <DCArtboard id="m-bns" label="05 · BNS" width={300} height={620}>
+          <MobileArt src="bns.html" />
+        </DCArtboard>
+        <DCArtboard id="m-mob" label="06 · MobiSwift" width={300} height={620}>
+          <MobileArt src="mobiswift.html" />
+        </DCArtboard>
+        <DCArtboard id="m-con" label="07 · Consulting" width={300} height={620}>
+          <MobileArt src="consulting.html" />
+        </DCArtboard>
+        <DCArtboard id="m-contact" label="08 · Contact" width={300} height={620}>
+          <MobileArt src="contact.html" />
+        </DCArtboard>
+      </DCSection>
+    </DesignCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('canvas-root')).render(<App />);
+</script>
+
+<script>
+  // Scale desktop iframes to fit their artboard width
+  // Each artboard is 720px wide and the iframe inside is 1440px → scale 0.5
+  // For desktop iframes: 720/1440 = 0.5
+  // For mobile iframes: phone screen ≈ 276px / 390 = 0.708
+  function applyScales() {
+    document.querySelectorAll('.ab-desk iframe').forEach(f => {
+      const w = f.parentElement.clientWidth;
+      const s = w / 1440;
+      f.style.transform = `scale(${s})`;
+      f.style.height = (f.parentElement.clientHeight / s) + 'px';
+    });
+    document.querySelectorAll('.phone .screen').forEach(scr => {
+      const f = scr.querySelector('iframe');
+      if (!f) return;
+      const w = scr.clientWidth;
+      const s = w / 390;
+      f.style.transform = `scale(${s})`;
+      f.style.height = (scr.clientHeight / s) + 'px';
+    });
+  }
+  // Apply once after mount + on resize
+  let raf;
+  const schedule = () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(applyScales); };
+  window.addEventListener('resize', schedule);
+  // Initial pass after canvas mounts
+  setTimeout(applyScales, 400);
+  setTimeout(applyScales, 1200);
+  setTimeout(applyScales, 2400);
+  // Re-apply when artboard size may have changed (focus open/close)
+  new MutationObserver(schedule).observe(document.body, { attributes: true, subtree: true, childList: true });
+</script>
+</body>
+</html>

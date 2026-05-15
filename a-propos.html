@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>À propos — SIYA Technology</title>
+<meta name="description" content="Découvrez l'histoire, la vision et les valeurs de SIYA Technology, l'ESN qui construit l'écosystème du commerce numérique africain.">
+<link rel="stylesheet" href="assets/siya.css">
+<style>
+  .about-hero {
+    padding: clamp(72px,10vw,140px) 0 clamp(56px,7vw,96px);
+    position: relative;
+    overflow: hidden;
+  }
+  .about-hero .display { max-width: 14ch; }
+  .pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 56px; margin-top: 80px; padding-top: 56px; border-top: 1px solid var(--hair); }
+  .pillar h3 { font-family: var(--serif); font-size: 28px; letter-spacing: -0.015em; margin-bottom: 12px; }
+  .pillar .num { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--cyan); margin-bottom: 28px; }
+  .pillar p { color: var(--muted); line-height: 1.6; }
+  @media (max-width: 760px) { .pillars { grid-template-columns: 1fr; gap: 40px; } }
+
+  .quote-section { padding: clamp(80px,10vw,140px) 0; }
+  .quote {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    max-width: 26ch;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .quote .outline { -webkit-text-stroke: 1px currentColor; -webkit-text-fill-color: transparent; }
+  .quote-meta {
+    text-align: center;
+    margin-top: 48px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+  }
+
+  .timeline { padding: clamp(72px,9vw,120px) 0; }
+  .timeline-grid { display: grid; grid-template-columns: 1fr 2.2fr; gap: 96px; }
+  .timeline ol { list-style: none; padding: 0; margin: 0; counter-reset: t; }
+  .timeline li {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 48px;
+    padding: 32px 0;
+    border-top: 1px solid var(--hair);
+    counter-increment: t;
+  }
+  .timeline li:last-child { border-bottom: 1px solid var(--hair); }
+  .timeline .yr {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--gold-deep);
+    padding-top: 4px;
+  }
+  .timeline h4 { font-family: var(--serif); font-size: 22px; letter-spacing: -0.012em; margin-bottom: 6px; }
+  .timeline p { color: var(--muted); max-width: 50ch; font-size: 15px; line-height: 1.6; }
+  @media (max-width: 880px) {
+    .timeline-grid { grid-template-columns: 1fr; gap: 32px; }
+    .timeline li { grid-template-columns: 70px 1fr; gap: 24px; }
+  }
+
+  .strat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 0; border-top: 1px solid var(--light-10); margin-top: 56px; }
+  .strat-cell { padding: 40px 28px; border-right: 1px solid var(--light-10); border-bottom: 1px solid var(--light-10); }
+  .strat-cell:last-child { border-right: 0; }
+  .strat-cell .icon { width: 36px; height: 36px; margin-bottom: 32px; }
+  .strat-cell h4 { font-family: var(--serif); font-size: 20px; letter-spacing: -0.01em; margin-bottom: 12px; }
+  .strat-cell p { color: var(--light-60); font-size: 14px; line-height: 1.6; }
+  @media (max-width: 880px) { .strat-grid { grid-template-columns: 1fr 1fr; } .strat-cell:nth-child(2n) { border-right: 0; } }
+  @media (max-width: 520px) { .strat-grid { grid-template-columns: 1fr; } .strat-cell { border-right: 0; } }
+</style>
+</head>
+<body class="surface-light" data-screen-label="À propos">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand" data-page-link aria-label="SIYA Technology — Accueil"><img src="assets/siya-logo-full.png" alt="SIYA Technology" class="brand-img"></a>
+    <div class="nav-links">
+      <a href="index.html#ecosysteme" data-page-link data-i18n="nav.eco">Écosystème</a>
+      <a href="a-propos.html" aria-current="page" data-page-link data-i18n="nav.about">À propos</a>
+      <a href="equipe.html" data-page-link data-i18n="nav.team">Équipe</a>
+      <a href="design-system.html" data-page-link data-i18n="nav.style">Style</a>
+    </div>
+    <div class="lang-toggle" data-lang-toggle><button data-lang="fr" type="button">FR</button><button data-lang="en" type="button">EN</button></div>
+    <a href="contact.html" class="nav-cta" data-page-link><span data-i18n="nav.contact">Nous contacter</span> ↗</a>
+  </div>
+</nav>
+
+<header class="about-hero">
+  <div class="container">
+    <div data-reveal-stagger>
+      <span class="eyebrow" style="color: var(--gold-deep);">À propos · SIYA Technology</span>
+      <h1 class="display" style="margin-top: 32px;" data-parallax="0.05">
+        <span style="display:block;">Pensé depuis</span>
+        <span style="display:block;">l'<span class="italic">Afrique,</span></span>
+        <span style="display:block;">structuré pour</span>
+        <span style="display:block;"><span class="outline">le monde.</span></span>
+      </h1>
+      <p class="lede" style="margin-top: 40px; max-width: 60ch;">SIYA Technology est une entreprise de services numériques fondée en 2024, incorporée au Delaware (USA), opérant au Cameroun et en France. Notre conviction fondatrice tient en une phrase : les solutions qui réussiront en Afrique sont celles qui ont été pensées depuis l'Afrique.</p>
+    </div>
+
+    <div class="pillars" data-reveal-stagger>
+      <div class="pillar">
+        <div class="num">— 01 · Vision</div>
+        <h3>Démocratiser le commerce digital africain</h3>
+        <p>Devenir un acteur majeur de la transformation numérique en Afrique francophone, en rendant le commerce en ligne accessible aux TPE et PME du continent.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">— 02 · Mission</div>
+        <h3>Outils simples, sûrs, abordables</h3>
+        <p>Fournir aux commerçants des plateformes pour vendre, encaisser et livrer sans friction. Penser <span class="serif-italic">mobile, no‑cash, escrow natif</span> dès le premier jour.</p>
+      </div>
+      <div class="pillar">
+        <div class="num">— 03 · Méthode</div>
+        <h3>Discipline capital, expansion séquencée</h3>
+        <p>Autofinancement par le consulting, fonds de roulement par les associés, levée seed optionnelle. Cameroun → CEMAC → UEMOA.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="quote-section surface-ivory">
+  <div class="container">
+    <blockquote class="quote" data-reveal data-parallax="0.03">
+      « Le commerce africain a besoin d'<span class="outline">infrastructures locales,</span> conçues à Douala, pensées pour le <em class="serif-italic" style="color: var(--gold-deep);">Mobile Money</em> et structurées au Delaware. »
+    </blockquote>
+    <div class="quote-meta" data-reveal>Félix Wilhem SONG · CEO · 2025</div>
+  </div>
+</section>
+
+<section class="timeline surface-light">
+  <div class="container">
+    <div class="timeline-grid">
+      <aside data-reveal>
+        <span class="eyebrow" style="color: var(--gold-deep);">Chronologie</span>
+        <h2 class="h1" style="margin-top: 20px;">Une <span class="serif-italic">histoire</span> en construction.</h2>
+      </aside>
+      <ol data-reveal-stagger>
+        <li>
+          <div class="yr">2023</div>
+          <div>
+            <h4>Conception</h4>
+            <p>Identification des besoins non couverts sur le marché africain du commerce digital. Naissance de l'idée SIYA.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2024</div>
+          <div>
+            <h4>Incorporation</h4>
+            <p>SIYA Technology est officiellement fondée au Delaware. Constitution de l'équipe fondatrice de 7 associés.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2025</div>
+          <div>
+            <h4>Développement & bêta</h4>
+            <p>Développement et lancement de la version bêta de SOKO, structuration des services BNS et démarrage du consulting.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2026—27</div>
+          <div>
+            <h4>Expansion nationale</h4>
+            <p>Déploiement national au Cameroun, ouverture progressive de la zone CEMAC, premier point de rentabilité opérationnelle.</p>
+          </div>
+        </li>
+        <li>
+          <div class="yr">2027—28</div>
+          <div>
+            <h4>Afrique francophone</h4>
+            <p>Extension vers la Côte d'Ivoire, le Sénégal et la zone UEMOA. Bêta de MobiSwift.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="section surface-dark">
+  <div class="container">
+    <div data-reveal>
+      <span class="eyebrow">Cinq principes directeurs</span>
+      <h2 class="h1" style="margin-top: 20px; max-width: 16ch;">Nos valeurs <span class="serif-italic">non négociables.</span></h2>
+    </div>
+    <div class="strat-grid" data-reveal-stagger style="grid-template-columns: repeat(5, 1fr);">
+      <div class="strat-cell">
+        <div class="mono" style="color: var(--cyan); letter-spacing: 0.14em; margin-bottom: 24px;">— I</div>
+        <h4>Intégrité</h4>
+        <p>Honnêteté et transparence dans toutes nos interactions — clients, partenaires, vendeurs, investisseurs. Notre crédibilité commerciale repose sur ce principe.</p>
+      </div>
+      <div class="strat-cell">
+        <div class="mono" style="color: var(--cyan); letter-spacing: 0.14em; margin-bottom: 24px;">— II</div>
+        <h4>Innovation</h4>
+        <p>Repousser les limites de ce qui est possible avec la technologie pour servir les besoins concrets du continent. Pas d'innovation pour la galerie.</p>
+      </div>
+      <div class="strat-cell">
+        <div class="mono" style="color: var(--cyan); letter-spacing: 0.14em; margin-bottom: 24px;">— III</div>
+        <h4>Engagement</h4>
+        <p>Investissement total dans chaque projet, dans un environnement opérationnel souvent contraint. La discipline d'exécution est notre force.</p>
+      </div>
+      <div class="strat-cell">
+        <div class="mono" style="color: var(--cyan); letter-spacing: 0.14em; margin-bottom: 24px;">— IV</div>
+        <h4>Collaboration</h4>
+        <p>Les meilleures solutions naissent de la coopération. En interne entre nos sept fondateurs, en externe avec opérateurs, banques et partenaires logistiques.</p>
+      </div>
+      <div class="strat-cell">
+        <div class="mono" style="color: var(--cyan); letter-spacing: 0.14em; margin-bottom: 24px;">— V</div>
+        <h4>Responsabilité</h4>
+        <p>Agir avec éthique et conscience des impacts — sur les commerçants qui dépendent de notre plateforme, sur l'environnement économique que nous façonnons.</p>
+      </div>
+    </div>
+
+    <!-- Tri-juridictional structure -->
+    <div style="margin-top: clamp(64px, 9vw, 120px);" data-reveal>
+      <span class="eyebrow" style="margin-bottom: 0;">Architecture tri-juridictionnelle</span>
+      <h2 class="h1" style="margin-top: 20px; max-width: 22ch;">Trois juridictions, <span class="serif-italic">trois rôles précis.</span></h2>
+    </div>
+    <div class="strat-grid" data-reveal-stagger style="grid-template-columns: repeat(3, 1fr); margin-top: 48px;">
+      <div class="strat-cell">
+        <div class="mono" style="color: var(--gold); letter-spacing: 0.14em; margin-bottom: 24px;">— CM · Marché de lancement</div>
+        <h4>Cameroun</h4>
+        <p>30 millions d'habitants, 42% d'usage Mobile Money, croissance du e-commerce +18% par an. C'est ici que nos équipes opèrent quotidiennement.</p>
+      </div>
+      <div class="strat-cell">
+        <div class="mono" style="color: var(--gold); letter-spacing: 0.14em; margin-bottom: 24px;">— FR · Lien diaspora</div>
+        <h4>France</h4>
+        <p>Présence française pour le développement diaspora, les partenariats financiers européens, l'accès aux talents tech bilingues et les flux France—Afrique.</p>
+      </div>
+      <div class="strat-cell">
+        <div class="mono" style="color: var(--gold); letter-spacing: 0.14em; margin-bottom: 24px;">— US · Véhicule international</div>
+        <h4>Delaware</h4>
+        <p>Standard mondial pour les startups tech à ambition internationale. Facilite les levées, simplifie les partenariats avec opérateurs et banques internationales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer surface-dark">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 16px;"><img src="assets/siya-logo-full.png" alt="SIYA Technology" class="brand-img" style="height: 28px;"></div>
+        <p class="body" style="max-width: 38ch;">Entreprise de services numériques fondée en 2024, incorporée au Delaware. Opérations Cameroun · France.</p>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.col.services">Services</h4>
+        <a href="soko.html" data-page-link>SOKO</a>
+        <a href="bns.html" data-page-link>BNS</a>
+        <a href="mobiswift.html" data-page-link>MobiSwift</a>
+        <a href="consulting.html" data-page-link>Consulting</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.col.house">Maison</h4>
+        <a href="a-propos.html" data-page-link data-i18n="nav.about">À propos</a>
+        <a href="equipe.html" data-page-link data-i18n="nav.team">Équipe</a>
+        <a href="contact.html" data-page-link>Contact</a>
+        <a href="design-system.html" data-page-link data-i18n="nav.style">Style</a>
+      </div>
+      <div class="footer-col">
+        <h4 data-i18n="footer.col.legal">Légal</h4>
+        <a>Mentions légales</a>
+        <a>Confidentialité</a>
+        <a>Conditions</a>
+      </div>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">SIYA.</div>
+    <div class="footer-base"><span data-i18n-html="footer.copyright">© <span data-year></span> SIYA Technology Corp. — Delaware</span><span data-i18n="footer.version">v1.1 · Refonte 2026</span></div>
+  </div>
+</footer>
+
+<script src="assets/siya.js" defer></script>
+<script src="assets/i18n.js" defer></script>
+</body>
+</html>

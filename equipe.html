@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Équipe — SIYA Technology</title>
+<link rel="stylesheet" href="assets/siya.css">
+<style>
+  .team-hero { padding: clamp(80px,10vw,140px) 0 clamp(48px,6vw,80px); }
+  .team-hero .display { max-width: 14ch; }
+  .team-meta {
+    display: flex; gap: 24px; flex-wrap: wrap; align-items: center;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--ink-60);
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid var(--hair);
+  }
+  .team-meta strong { font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--ink); letter-spacing: -0.01em; text-transform: none; margin-right: 12px; font-weight: 400; font-variation-settings: "SOFT" 100; }
+
+  /* Layer 1 - CEO hero */
+  .ceo-section { padding: clamp(48px,6vw,80px) 0 clamp(80px,10vw,140px); }
+  .ceo-card {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    padding: 64px 56px;
+    border: 1px solid var(--hair);
+    border-radius: var(--r-lg);
+    background: linear-gradient(180deg, rgba(212,173,124,0.06), transparent 60%);
+    position: relative;
+    overflow: hidden;
+  }
+  .ceo-card .label-tag {
+    position: absolute;
+    top: 24px; right: 24px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--gold-deep);
+    text-transform: uppercase;
+  }
+  .ceo-card .role { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; color: var(--gold-deep); text-transform: uppercase; }
+  .ceo-card h2 {
+    font-family: var(--serif);
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 16px 0 24px;
+    font-weight: 350;
+  }
+  .ceo-card h2 .italic { font-style: italic; }
+  .ceo-card p { color: var(--ink-60); max-width: 50ch; line-height: 1.6; font-size: 16px; }
+  .ceo-card .credentials { margin-top: 32px; display: flex; gap: 32px; flex-wrap: wrap; }
+  .ceo-card .credentials > div { font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-60); }
+  .ceo-card .credentials > div strong { display: block; font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--ink); font-weight: 400; margin-bottom: 2px; letter-spacing: -0.01em; }
+  .mono-avatar {
+    aspect-ratio: 1;
+    max-width: 380px;
+    margin: 0 auto;
+    border: 1px solid var(--ink-20);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .mono-avatar svg { width: 100%; height: 100%; }
+  @media (max-width: 880px) {
+    .ceo-card { grid-template-columns: 1fr; gap: 48px; padding: 40px 28px; }
+  }
+
+  /* Layer 2 - Associé(s) prominent */
+  .partners-section { padding: clamp(64px,8vw,120px) 0; border-top: 1px solid var(--hair); }
+  .partners-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-top: 56px;
+    border-top: 1px solid var(--hair);
+  }
+  .partner-row {
+    display: grid;
+    grid-template-columns: 200px 1fr 200px;
+    gap: 56px;
+    align-items: center;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--hair);
+    transition: background .3s;
+  }
+  .partner-row:hover { background: var(--ivory); }
+  .partner-mono {
+    width: 120px;
+    height: 120px;
+    border: 1px solid var(--ink-20);
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .partner-mono svg { width: 100%; height: 100%; }
+  .partner-info h4 {
+    font-family: var(--serif);
+    font-size: 32px;
+    letter-spacing: -0.015em;
+    font-weight: 400;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+  .partner-info .role {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--cyan-deep);
+    text-transform: uppercase;
+  }
+  .partner-info p { color: var(--ink-60); font-size: 14px; line-height: 1.5; max-width: 56ch; margin-top: 12px; }
+  .partner-link {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--ink-60);
+    text-transform: uppercase;
+  }
+  .partner-link a { display: inline-flex; gap: 6px; align-items: center; }
+  .partner-link a::after { content: "→"; transition: transform .3s; }
+  .partner-row:hover .partner-link a::after { transform: translateX(4px); }
+  @media (max-width: 880px) {
+    .partner-row { grid-template-columns: 100px 1fr; gap: 24px; padding: 28px 16px; }
+    .partner-mono { width: 80px; height: 80px; }
+    .partner-info h4 { font-size: 24px; }
+    .partner-link { display: none; }
+  }
+
+  /* Layer 3 - Team grid */
+  .team-section { padding: clamp(64px,8vw,120px) 0; }
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-top: 56px;
+    border-top: 1px solid var(--light-10);
+  }
+  .team-card {
+    padding: 40px 28px;
+    border-right: 1px solid var(--light-10);
+    border-bottom: 1px solid var(--light-10);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    min-height: 320px;
+    transition: background .3s;
+  }
+  .team-card:nth-child(3n) { border-right: 0; }
+  .team-card:hover { background: rgba(110,196,245,0.04); }
+  .team-card .team-mono {
+    width: 64px; height: 64px;
+    border: 1px solid var(--light-20);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+  .team-card .team-mono svg { width: 100%; height: 100%; }
+  .team-card h5 { font-family: var(--serif); font-size: 22px; letter-spacing: -0.01em; font-weight: 400; line-height: 1.1; }
+  .team-card .role { font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em; color: var(--cyan); text-transform: uppercase; }
+  .team-card p { color: var(--light-60); font-size: 14px; line-height: 1.6; flex: 1; }
+  @media (max-width: 880px) { .team-grid { grid-template-columns: 1fr 1fr; } .team-card:nth-child(3n) { border-right: 1px solid var(--light-10); } .team-card:nth-child(2n) { border-right: 0; } }
+  @media (max-width: 520px) { .team-grid { grid-template-columns: 1fr; } .team-card { border-right: 0; min-height: auto; } }
+
+  /* Hierarchy labels */
+  .hier {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-60);
+    margin-bottom: 16px;
+  }
+  .hier .num { color: var(--gold-deep); }
+  .surface-dark .hier { color: var(--light-60); }
+  .surface-dark .hier .num { color: var(--cyan); }
+</style>
+</head>
+<body class="surface-light" data-screen-label="Équipe">
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand" data-page-link aria-label="SIYA Technology — Accueil"><img src="assets/siya-logo-full.png" alt="SIYA Technology" class="brand-img"></a>
+    <div class="nav-links">
+      <a href="index.html#ecosysteme" data-page-link data-i18n="nav.eco">Écosystème</a>
+      <a href="a-propos.html" data-page-link data-i18n="nav.about">À propos</a>
+      <a href="equipe.html" aria-current="page" data-page-link data-i18n="nav.team">Équipe</a>
+      <a href="design-system.html" data-page-link data-i18n="nav.style">Style</a>
+    </div>
+    <div class="lang-toggle" data-lang-toggle><button data-lang="fr" type="button">FR</button><button data-lang="en" type="button">EN</button></div>
+    <a href="contact.html" class="nav-cta" data-page-link><span data-i18n="nav.contact">Nous contacter</span> ↗</a>
+  </div>
+</nav>
+
+<header class="team-hero">
+  <div class="container" data-reveal-stagger>
+    <span class="eyebrow" style="color: var(--gold-deep);">Équipe · Sept associés fondateurs</span>
+    <h1 class="display" style="margin-top: 32px;" data-parallax="0.04">
+      <span style="display:block;">Sept <span class="italic">fondateurs,</span></span>
+      <span style="display:block;"><span class="outline">une vision</span> commune.</span>
+    </h1>
+    <p class="lede" style="margin-top: 36px; max-width: 60ch;">SIYA Technology est porté par une équipe complémentaire — commerciale, financière, technique — réunie par la conviction que l'Afrique mérite des solutions conçues depuis l'Afrique. Nous travaillons ensemble, sans hiérarchie superflue.</p>
+    <div class="team-meta">
+      <span><strong>07</strong> associés fondateurs</span>
+      <span><strong>Douala · Paris</strong> bases opérationnelles</span>
+      <span><strong>FR · EN</strong> langues de travail</span>
+      <span><strong>2024</strong> année de fondation</span>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ÉQUIPE — Grille unique ============ -->
+<section class="team-section surface-dark">
+  <div class="container">
+    <div class="hier" data-reveal>
+      <span class="num">— 01</span>
+      <span>Les sept associés fondateurs</span>
+    </div>
+    <div style="display:flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap;" data-reveal>
+      <h2 class="h1" style="max-width: 18ch; margin-top: 12px;">L'équipe qui <span class="serif-italic">construit</span> SIYA.</h2>
+      <p class="lede" style="max-width: 38ch;">Sept associés aux compétences complémentaires, réunis par la conviction commune que l'Afrique mérite des solutions conçues depuis l'Afrique.</p>
+    </div>
+
+    <div class="team-grid" data-reveal-stagger>
+      <article class="team-card">
+        <div class="team-mono">
+          <svg viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(245,241,234,0.18)"/>
+            <text x="40" y="50" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="36" fill="#d4ad7c">F</text>
+          </svg>
+        </div>
+        <div>
+          <div class="role">CEO · Développement commercial</div>
+          <h5>Félix Wilhem Song</h5>
+        </div>
+        <p>Porte la vision SIYA. Coordonne la stratégie globale et le développement commercial.</p>
+      </article>
+
+      <article class="team-card">
+        <div class="team-mono">
+          <svg viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(245,241,234,0.18)"/>
+            <text x="40" y="50" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="36" fill="#d4ad7c">J</text>
+          </svg>
+        </div>
+        <div>
+          <div class="role">DAF · Finance &amp; conformité</div>
+          <h5>Jean Christian Dikoume</h5>
+        </div>
+        <p>Pilote la structure financière, la conformité réglementaire et les relations avec les partenaires financiers.</p>
+      </article>
+
+      <article class="team-card">
+        <div class="team-mono">
+          <svg viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(245,241,234,0.18)"/>
+            <text x="40" y="50" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="36" fill="#6ec4f5">Y</text>
+          </svg>
+        </div>
+        <div>
+          <div class="role">Front · Cybersécurité</div>
+          <h5>Yannick Byll</h5>
+        </div>
+        <p>Sécurité applicative, hardening des plateformes, conception des interfaces utilisateur critiques.</p>
+      </article>
+
+      <article class="team-card">
+        <div class="team-mono">
+          <svg viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(245,241,234,0.18)"/>
+            <text x="40" y="50" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="36" fill="#6ec4f5">J</text>
+          </svg>
+        </div>
+        <div>
+          <div class="role">IT Front-end</div>
+          <h5>Jedd Song</h5>
+        </div>
+        <p>Développement des interfaces utilisateur de l'écosystème — SOKO acheteurs et vendeurs en priorité.</p>
+      </article>
+
+      <article class="team-card">
+        <div class="team-mono">
+          <svg viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(245,241,234,0.18)"/>
+            <text x="40" y="50" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="36" fill="#6ec4f5">K</text>
+          </svg>
+        </div>
+        <div>
+          <div class="role">IT Back-end</div>
+          <h5>Kadel Njangtang</h5>
+        </div>
+        <p>Architecture backend, conception des API, intégrations Mobile Money et systèmes de paiement.</p>
+      </article>
+
+      <article class="team-card">
+        <div class="team-mono">
+          <svg viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(245,241,234,0.18)"/>
+            <text x="40" y="50" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="36" fill="#6ec4f5">B</text>
+          </svg>
+        </div>
+        <div>
+          <div class="role">IT Web App</div>
+          <h5>Billy Nguedjio</h5>
+        </div>
+        <p>Applications web et infrastructure cloud. Performance, scalabilité, observabilité.</p>
+      </article>
+
+      <article class="team-card">
+        <div class="team-mono">
+          <svg viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(245,241,234,0.18)"/>
+            <text x="40" y="50" text-anchor="middle" font-family="Fraunces" font-style="italic" font-size="36" fill="#6ec4f5">M</text>
+          </svg>
+        </div>
+        <div>
+          <div class="role">Front · Mobile-first</div>
+          <h5>Mohamed Ayeva</h5>
+        </div>
+        <p>Conception et développement d'interfaces mobile-first, adaptées aux usages du continent.</p>
+      </article>
+
+      <article class="team-card" style="background: rgba(245,241,234,0.03);">
+        <div class="team-mono" style="border-style: dashed;">
+          <svg viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="38" fill="none" stroke="rgba(245,241,234,0.18)" stroke-dasharray="3 4"/>
+            <text x="40" y="46" text-anchor="middle" font-family="JetBrains Mono" font-size="11" letter-spacing="2" fill="#d4ad7c">+</text>
+          </svg>
+        </div>
+        <div>
+          <div class="role">Rejoignez-nous</div>
+          <h5><span class="serif-italic">Nous recrutons.</span></h5>
+        </div>
+        <p>Talents tech et business — écrivez-nous à <a href="mailto:talents@siya-tech.com" style="color: var(--cyan); border-bottom: 1px solid var(--cyan);">talents@siya-tech.com</a>.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Approche commune ============ -->
+<section class="section surface-light">
+  <div class="container">
+    <div style="display:grid; grid-template-columns: 1fr 2fr; gap: 96px;">
+      <aside data-reveal>
+        <span class="eyebrow" style="color: var(--gold-deep);">Notre approche</span>
+        <h2 class="h2" style="margin-top: 20px;">Une équipe d'<span class="serif-italic">opérateurs.</span></h2>
+      </aside>
+      <div data-reveal>
+        <p style="font-family: var(--serif); font-size: clamp(20px,2vw,26px); line-height: 1.45; letter-spacing: -0.01em; color: var(--ink); max-width: 60ch;">Sept associés qui travaillent ensemble, sans hiérarchie superflue. Direction, finance, produit — chacun porte son expertise mais nous construisons d'un seul mouvement, depuis Douala et Paris. C'est ce qui nous permet de livrer vite et de décider collégialement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer surface-dark">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom: 16px;"><img src="assets/siya-logo-full.png" alt="SIYA Technology" class="brand-img" style="height: 28px;"></div>
+        <p class="body" style="max-width: 38ch;">Entreprise de services numériques fondée en 2024, incorporée au Delaware.</p>
+      </div>
+      <div class="footer-col"><h4 data-i18n="footer.col.services">Services</h4><a href="soko.html" data-page-link>SOKO</a><a href="bns.html" data-page-link>BNS</a><a href="mobiswift.html" data-page-link>MobiSwift</a><a href="consulting.html" data-page-link>Consulting</a></div>
+      <div class="footer-col"><h4 data-i18n="footer.col.house">Maison</h4><a href="a-propos.html" data-page-link data-i18n="nav.about">À propos</a><a href="equipe.html" data-page-link data-i18n="nav.team">Équipe</a><a href="contact.html" data-page-link>Contact</a><a href="design-system.html" data-page-link data-i18n="nav.style">Style</a></div>
+      <div class="footer-col"><h4 data-i18n="footer.col.legal">Légal</h4><a>Mentions</a><a>Confidentialité</a><a>Conditions</a></div>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">SIYA.</div>
+    <div class="footer-base"><span data-i18n-html="footer.copyright">© <span data-year></span> SIYA Technology Corp. — Delaware</span><span data-i18n="footer.version">v1.1 · Refonte 2026</span></div>
+  </div>
+</footer>
+
+<script src="assets/siya.js" defer></script>
+<script src="assets/i18n.js" defer></script>
+</body>
+</html>
