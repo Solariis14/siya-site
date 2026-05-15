@@ -176,26 +176,26 @@
       <p class="lede">Investisseur, partenaire opérateur, institution financière ou client Consulting — nous sommes disponibles pour échanger. Réponse sous 48 heures ouvrées.</p>
 
       <div class="channels">
-        <div class="channel">
+        <a class="channel" href="mailto:contact@siya-tech.com" style="text-decoration:none;color:inherit;">
           <span class="num">— 01</span>
           <div><div class="label">Email général</div><div class="val">contact@siya-tech.com</div></div>
           <span class="arr">↗</span>
-        </div>
-        <div class="channel">
+        </a>
+        <a class="channel" href="mailto:partenariats@siya-tech.com" style="text-decoration:none;color:inherit;">
           <span class="num">— 02</span>
           <div><div class="label">Partenariats opérateurs</div><div class="val">partenariats@siya-tech.com</div></div>
           <span class="arr">↗</span>
-        </div>
-        <div class="channel">
+        </a>
+        <a class="channel" href="mailto:investisseurs@siya-tech.com" style="text-decoration:none;color:inherit;">
           <span class="num">— 03</span>
           <div><div class="label">Investisseurs · Fonds</div><div class="val">investisseurs@siya-tech.com</div></div>
           <span class="arr">↗</span>
-        </div>
-        <div class="channel">
+        </a>
+        <a class="channel" href="mailto:talents@siya-tech.com" style="text-decoration:none;color:inherit;">
           <span class="num">— 04</span>
           <div><div class="label">Carrières</div><div class="val">talents@siya-tech.com</div></div>
           <span class="arr">↗</span>
-        </div>
+        </a>
       </div>
     </div>
 
@@ -213,7 +213,7 @@
       <h2 style="margin-top: 16px;">Dites-nous <span class="serif-italic">qui</span> vous êtes.</h2>
       <p class="sub">Quelques informations pour qu'on puisse vous répondre vite et bien.</p>
 
-      <form onsubmit="event.preventDefault(); document.getElementById('thanks').hidden = false; this.hidden = true;">
+      <form id="contact-form" action="https://formspree.io/f/mrejnkdn" method="POST">
         <div class="field">
           <label>Vous êtes</label>
           <div class="interests" id="role-chips">
@@ -227,18 +227,18 @@
         </div>
 
         <div class="field-row">
-          <div class="field"><label>Prénom · Nom</label><input type="text" placeholder="Aïcha Tchamba" required></div>
-          <div class="field"><label>Société</label><input type="text" placeholder="Atelier Tchamba SARL"></div>
+          <div class="field"><label>Prénom · Nom</label><input type="text" name="nom" placeholder="Aïcha Tchamba" required></div>
+          <div class="field"><label>Société</label><input type="text" name="societe" placeholder="Atelier Tchamba SARL"></div>
         </div>
 
         <div class="field-row">
-          <div class="field"><label>Email</label><input type="email" placeholder="a.tchamba@…" required></div>
-          <div class="field"><label>Téléphone</label><input type="tel" placeholder="+237 6 …"></div>
+          <div class="field"><label>Email</label><input type="email" name="email" placeholder="a.tchamba@…" required></div>
+          <div class="field"><label>Téléphone</label><input type="tel" name="telephone" placeholder="+237 6 …"></div>
         </div>
 
         <div class="field">
           <label>Service concerné</label>
-          <select>
+          <select name="service">
             <option>SOKO — Marketplace</option>
             <option>BNS — Livraison</option>
             <option>MobiSwift — Paiement</option>
@@ -249,7 +249,7 @@
 
         <div class="field">
           <label>Votre message</label>
-          <textarea placeholder="Présentez votre projet ou votre demande en quelques lignes…" required></textarea>
+          <textarea name="message" placeholder="Présentez votre projet ou votre demande en quelques lignes…" required></textarea>
         </div>
 
         <div class="submit-row">
@@ -270,11 +270,52 @@
 <script src="assets/siya.js" defer></script>
 <script src="assets/i18n.js" defer></script>
 <script>
+  // Chip selection + inject role into form
+  let selectedRole = 'Investisseur';
   document.querySelectorAll('#role-chips .interest-chip').forEach(c => {
     c.addEventListener('click', () => {
       document.querySelectorAll('#role-chips .interest-chip').forEach(x => x.classList.remove('active'));
       c.classList.add('active');
+      selectedRole = c.textContent.trim();
     });
+  });
+
+  // Form submission via Formspree
+  document.getElementById('contact-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const form = this;
+    const btn = form.querySelector('button[type="submit"]');
+    btn.textContent = 'Envoi en cours…';
+    btn.disabled = true;
+
+    // Add role as hidden field
+    let roleInput = form.querySelector('input[name="role"]');
+    if (!roleInput) {
+      roleInput = document.createElement('input');
+      roleInput.type = 'hidden';
+      roleInput.name = 'role';
+      form.appendChild(roleInput);
+    }
+    roleInput.value = selectedRole;
+
+    const data = new FormData(form);
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.hidden = true;
+        document.getElementById('thanks').hidden = false;
+      } else {
+        btn.textContent = 'Erreur — réessayez';
+        btn.disabled = false;
+      }
+    } catch(err) {
+      btn.textContent = 'Erreur réseau — réessayez';
+      btn.disabled = false;
+    }
   });
 </script>
 </body>
