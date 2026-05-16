@@ -98,6 +98,15 @@
     a.addEventListener('click', (e) => {
       const href = a.getAttribute('href');
       if (!href || href.startsWith('#') || a.target === '_blank') return;
+      // Same page anchor (e.g. index.html#ecosysteme when on index.html)
+      const url = new URL(href, window.location.href);
+      const samePage = url.pathname === window.location.pathname && url.hash;
+      if (samePage) {
+        e.preventDefault();
+        const target = document.querySelector(url.hash);
+        if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
       e.preventDefault();
       document.documentElement.classList.add('is-leaving');
       setTimeout(() => { window.location.href = href; }, 220);
