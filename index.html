@@ -45,9 +45,11 @@
   }
   .hero-strip strong { color: var(--ivory); font-weight: 450; font-family: var(--sans); font-size: 13px; letter-spacing: 0; text-transform: none; display: block; margin-top: 4px; }
   @media (max-width: 880px) {
-    .hero-text { grid-column: 1 / -1; }
-    .hero-vis { grid-column: 1 / -1; margin-top: 48px; }
-    .hero-strip { grid-template-columns: 1fr 1fr; gap: 20px; padding: 18px var(--gutter); }
+    .hero { flex-direction: column; align-items: stretch; min-height: auto; padding-bottom: 0; }
+    .hero .grid-12 { display: block; }
+    .hero-text { width: 100%; }
+    .hero-vis { display: none; }
+    .hero-strip { position: relative; grid-template-columns: 1fr 1fr; gap: 20px; padding: 28px var(--gutter); margin-top: 48px; border-top: 1px solid var(--light-10); }
   }
 
   /* Animated hero SVG */
