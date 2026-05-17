@@ -45,22 +45,26 @@
   }
   .hero-strip strong { color: var(--ivory); font-weight: 450; font-family: var(--sans); font-size: 13px; letter-spacing: 0; text-transform: none; display: block; margin-top: 4px; }
   @media (max-width: 880px) {
+    /* Hero layout: stacked column on mobile */
     .hero { flex-direction: column; align-items: stretch; min-height: auto; padding-bottom: 0; }
     .hero .grid-12 { display: block; }
     .hero-text { width: 100%; }
+    /* SVG orbital: show below text, contained */
     .hero-vis {
       display: block;
       width: 100%;
       max-width: 320px;
-      margin: 56px auto 8px;
+      margin: 48px auto 0;
       grid-column: unset;
       overflow: hidden;
     }
-    .hero-vis .eco-svg { max-height: 320px; overflow: hidden; display: block; }
-    /* Hide node labels in mobile to avoid overflow, keep visual */
+    .hero-vis .eco-svg { max-height: 320px; display: block; }
+    /* Hide SVG text labels on mobile (space too small) */
     .hero-vis .eco-svg text { display: none; }
+    /* Pause animations to avoid transform conflict with translate attribute */
     .hero-vis .eco-svg .node-pulse { animation: none; }
-    .hero-vis .eco-svg .ring { animation: none; }
+    .hero-vis .eco-svg .ring { animation-play-state: paused; }
+    /* Stats strip below SVG */
     .hero-strip { position: relative; grid-template-columns: 1fr 1fr; gap: 20px; padding: 28px var(--gutter); margin-top: 32px; border-top: 1px solid var(--light-10); }
   }
 
@@ -69,7 +73,7 @@
   .eco-svg .ring { transform-origin: center; transform-box: fill-box; animation: ring-rot 80s linear infinite; }
   .eco-svg .ring-2 { animation: ring-rot 110s linear infinite reverse; }
   @keyframes ring-rot { to { transform: rotate(360deg); } }
-  .eco-svg .node-pulse { transform-origin: center; transform-box: fill-box; animation: pulse-soft 4.8s var(--ease-in-out) infinite; }
+  .eco-svg .node-pulse { transform-origin: center; transform-box: fill-box; /* pulse-soft disabled globally: conflicts with SVG translate attribute */ }
   .eco-svg .node-pulse.delay-2 { animation-delay: -1.6s; }
   .eco-svg .node-pulse.delay-3 { animation-delay: -3.2s; }
   .eco-svg .node-pulse.delay-4 { animation-delay: -2.4s; }
@@ -322,22 +326,22 @@
             <g class="node-pulse" transform="translate(260 140)">
               <circle r="22" fill="#0a1428" stroke="#6ec4f5" stroke-width="1.2"/>
               <circle r="6" fill="#6ec4f5"/>
-              <text y="-32" text-anchor="middle" font-family="JetBrains Mono" font-size="10" letter-spacing="2" fill="#9dd5f7">SOKO</text>
+              <text class="svg-label-soko" y="-32" text-anchor="middle" font-family="JetBrains Mono" font-size="10" letter-spacing="2" fill="#9dd5f7">SOKO</text>
             </g>
             <g class="node-pulse delay-2" transform="translate(380 260)">
               <circle r="22" fill="#0a1428" stroke="#d4ad7c" stroke-width="1.2"/>
               <circle r="6" fill="#d4ad7c"/>
-              <text x="32" y="4" font-family="JetBrains Mono" font-size="10" letter-spacing="2" fill="#e2c39a">BNS</text>
+              <text class="svg-label-bns" x="32" y="4" font-family="JetBrains Mono" font-size="10" letter-spacing="2" fill="#e2c39a">BNS</text>
             </g>
             <g class="node-pulse delay-3" transform="translate(260 380)">
               <circle r="22" fill="#0a1428" stroke="#6ec4f5" stroke-width="1.2" stroke-dasharray="2 3"/>
               <circle r="6" fill="#6ec4f5" opacity="0.4"/>
-              <text y="44" text-anchor="middle" font-family="JetBrains Mono" font-size="10" letter-spacing="2" fill="#9dd5f7">MOBISWIFT</text>
+              <text class="svg-label-mobi" y="44" text-anchor="middle" font-family="JetBrains Mono" font-size="10" letter-spacing="2" fill="#9dd5f7">MOBISWIFT</text>
             </g>
             <g class="node-pulse delay-4" transform="translate(140 260)">
               <circle r="22" fill="#0a1428" stroke="rgba(245,241,234,0.6)" stroke-width="1.2"/>
               <circle r="6" fill="#f5f1ea" opacity="0.75"/>
-              <text x="-32" y="4" text-anchor="end" font-family="JetBrains Mono" font-size="10" letter-spacing="2" fill="#f5f1ea" opacity="0.7">CONSULTING</text>
+              <text class="svg-label-consulting" x="-32" y="4" text-anchor="end" font-family="JetBrains Mono" font-size="10" letter-spacing="2" fill="#f5f1ea" opacity="0.7">CONSULTING</text>
             </g>
           </g>
           <!-- Center mark -->
